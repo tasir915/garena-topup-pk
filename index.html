@@ -3,259 +3,232 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grena Top-Up PK - Cyber Matrix Engine</title>
+    <title>Garena - Official Top Up Center Clone</title>
     
-    <!-- Tab Icon & Fonts -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://w3.org viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💎</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://w3.org viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔥</text></svg>">
     <link rel="stylesheet" href="https://cloudflare.com">
     
     <!-- Google AdSense Code -->
     <script async src="https://googlesyndication.com" crossorigin="anonymous"></script>
 
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Courier New', Courier, monospace; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         
-        /* 100% Flexible Adaptive Layout Background */
-        body { 
-            background: #020617;
-            background-image: linear-gradient(0deg, rgba(2,6,23,1) 0%, rgba(15,23,42,1) 100%);
-            color: #38bdf8; 
-            display: flex; flex-direction: column; align-items: center; 
-            min-height: 100vh; padding: 20px; gap: 20px;
-            perspective: 1000px;
-            width: 100%;
-            overflow-x: hidden;
-        }
+        body { background: #f1f5f9; color: #334155; display: flex; flex-direction: column; align-items: center; min-height: 100vh; padding-bottom: 40px; }
 
-        /* Perfectly Centered Movie Style Hacker Loader */
-        #splash-screen {
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            background: #020617;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            z-index: 9999;
-            transition: opacity 0.6s ease, visibility 0.6s ease;
-        }
-        .hacker-logo { font-size: 65px; color: #10b981; animation: terminalPulse 1.5s infinite alternate; margin-bottom: 25px; }
-        .hacker-text {
-            color: #10b981; font-weight: bold; font-size: 24px; letter-spacing: 3px;
-            overflow: hidden; border-right: 3px solid #10b981; white-space: nowrap; width: 0;
-            animation: cyberTyping 2s steps(25, end) forwards, blink .75s step-end infinite;
-            text-align: center;
-        }
-        @keyframes terminalPulse { to { transform: scale(1.1); text-shadow: 0 0 30px #10b981; } }
-        @keyframes cyberTyping { from { width: 0 } to { width: 290px } }
-        @keyframes blink { from, to { border-color: transparent } 50% { border-color: #10b981 } }
+        /* Exactly Like topup.pk Header */
+        .garena-header { width: 100%; background: #ffffff; padding: 15px 30px; border-bottom: 2px solid #e2e8f0; display: flex; align-items: center; gap: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .garena-logo { color: #fe2c55; font-size: 24px; font-weight: bold; display: flex; align-items: center; gap: 8px; font-style: italic; }
+        .header-sep { height: 25px; width: 1px; background: #cbd5e1; }
+        .header-title { font-size: 16px; color: #64748b; font-weight: 500; }
 
-        /* Premium 3D Glassmorphism Cards */
-        .app-header {
-            width: 100%; max-width: 460px; background: rgba(15, 23, 42, 0.85);
-            padding: 20px; border-radius: 16px; border: 1px solid #10b981;
-            box-shadow: 0 15px 35px rgba(16, 185, 129, 0.2); text-align: center;
-        }
-        .app-title { font-size: 26px; font-weight: bold; color: #10b981; text-shadow: 0 0 10px rgba(16, 185, 129, 0.5); }
-        .developer-tag { font-size: 11px; color: #38bdf8; font-weight: bold; margin-top: 5px; letter-spacing: 2px; }
+        .main-app { width: 100%; max-width: 750px; padding: 20px; display: flex; flex-direction: column; gap: 20px; margin-top: 15px; }
+        .content-card { background: #ffffff; border-radius: 8px; padding: 20px; border: 1px solid #e2e8f0; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+        .step-num { display: inline-block; background: #fe2c55; color: white; width: 22px; height: 22px; text-align: center; border-radius: 4px; font-weight: bold; font-size: 14px; margin-right: 10px; }
+        .card-title { font-size: 18px; font-weight: bold; color: #1e293b; margin-bottom: 15px; display: flex; align-items: center; }
 
-        .wallet-card {
-            width: 100%; max-width: 460px; background: #070a13; padding: 18px;
-            border-radius: 12px; border: 1px solid #334155; display: flex;
-            justify-content: space-between; align-items: center; box-shadow: inset 0 4px 10px rgba(0,0,0,0.8);
-        }
-        .wallet-balance { font-size: 22px; font-weight: bold; color: #eab308; display: flex; align-items: center; gap: 8px; text-shadow: 0 0 10px rgba(234, 179, 8, 0.4); }
-        .wallet-label { font-size: 13px; color: #64748b; letter-spacing: 1px; }
+        /* Real ID Insertion System */
+        .uid-input-box { width: 100%; padding: 12px 15px; border-radius: 6px; border: 1px solid #cbd5e1; font-size: 16px; font-weight: bold; outline: none; transition: 0.2s; color: #1e293b; }
+        .uid-input-box:focus { border-color: #fe2c55; box-shadow: 0 0 0 3px rgba(254, 44, 85, 0.15); }
+        .search-btn { margin-top: 10px; width: 100%; background: #fe2c55; border: none; color: white; padding: 12px; font-size: 16px; font-weight: bold; border-radius: 6px; cursor: pointer; transition: 0.2s; }
+        .search-btn:hover { background: #e11d48; }
 
-        .app-container { width: 100%; max-width: 460px; display: flex; flex-direction: column; gap: 20px; }
-        .section-box { background: rgba(30, 41, 59, 0.6); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); padding: 20px; border-radius: 16px; border: 1px solid rgba(56, 189, 248, 0.15); box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
-        .section-title { font-size: 16px; color: #38bdf8; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #334155; padding-bottom: 8px; font-weight: bold; text-transform: uppercase; }
+        /* Live Account Matrix Note */
+        .account-display { display: none; background: #f8fafc; border: 1px dashed #fe2c55; padding: 15px; border-radius: 6px; margin-top: 15px; align-items: center; gap: 12px; }
+        .user-avatar { width: 45px; height: 45px; background: #cbd5e1; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 20px; color: #475569; border: 2px solid #fe2c55; }
+        .user-name-node { font-weight: bold; color: #1e293b; font-size: 15px; }
+        .user-id-node { font-size: 13px; color: #64748b; }
 
-        /* Hacker Task Grid */
-        .task-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        .task-card { background: #020617; padding: 12px; border-radius: 8px; border: 1px solid #1e293b; border-left: 4px solid #10b981; display: flex; flex-direction: column; justify-content: space-between; gap: 8px; }
-        .task-info h4 { font-size: 13px; color: #f8fafc; }
-        .task-info p { font-size: 11px; color: #10b981; font-weight: bold; }
+        /* Hacker Ad Terminal Grid */
+        .ad-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-top: 10px; }
+        .ad-btn { background: #0f172a; color: #10b981; border: 1px solid #10b981; padding: 10px; font-weight: bold; border-radius: 6px; cursor: pointer; font-size: 12px; display: flex; align-items: center; justify-content: center; gap: 6px; }
+        .ad-btn:hover { background: #1e293b; text-shadow: 0 0 8px #10b981; }
+
+        /* Real Coins Balance Bar */
+        .coin-bar { background: #1e293b; color: white; display: flex; justify-content: space-between; padding: 12px 20px; border-radius: 6px; font-weight: bold; margin-bottom: 10px; font-size: 15px; }
+
+        /* Daraz Style 25% Off Grid Layout */
+        .diamond-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; }
+        .diamond-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px 15px; text-align: center; position: relative; display: flex; flex-direction: column; align-items: center; gap: 6px; cursor: pointer; transition: 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+        .diamond-card:hover { border-color: #fe2c55; transform: translateY(-2px); box-shadow: 0 6px 12px rgba(254, 44, 85, 0.08); }
+        .diamond-icon { font-size: 26px; color: #38bdf8; text-shadow: 0 2px 6px rgba(56,189,248,0.2); }
+        .dia-count { font-size: 16px; font-weight: bold; color: #1e293b; }
         
-        .action-btn { width: 100%; background: linear-gradient(135deg, #10b981, #059669); border: none; color: white; padding: 8px; font-weight: bold; border-radius: 6px; cursor: pointer; font-size: 11px; box-shadow: 0 4px 10px rgba(16, 185, 129, 0.2); }
-        .link-btn { width: 100%; background: linear-gradient(135deg, #fe2c55, #ff007f); border: none; color: white; padding: 12px; font-weight: bold; border-radius: 8px; cursor: pointer; font-size: 14px; box-shadow: 0 4px 12px rgba(254, 44, 85, 0.3); text-transform: uppercase; margin-top: 5px; }
-        .action-btn:hover, .link-btn:hover { transform: scale(1.02); }
-        /* Store System Layout */
-        .store-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-        .store-item { background: #070a13; border: 1px solid #1e293b; padding: 15px; border-radius: 12px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 8px; box-shadow: 0 8px 16px rgba(0,0,0,0.5); }
-        .store-item:hover { border-color: #10b981; }
-        .item-cost { font-size: 11px; color: #10b981; font-weight: bold; background: rgba(16, 185, 129, 0.1); padding: 3px 10px; border-radius: 20px; border: 1px solid rgba(16, 185, 129, 0.2); }
-        
-        .claim-btn { width: 100%; background: linear-gradient(135deg, #1e40af, #2563eb); border: none; color: white; padding: 9px; font-weight: bold; border-radius: 6px; cursor: pointer; font-size: 12px; margin-top: 5px; }
-        .uid-input { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #334155; background: #020617; color: #10b981; font-size: 14px; margin-bottom: 12px; outline: none; text-align: center; font-weight: bold; }
-        .uid-input:focus { border-color: #10b981; }
+        /* Daraz Style Sale Tags */
+        .sale-tag { position: absolute; top: 0; left: 0; background: linear-gradient(135deg, #ff4d4d, #fe2c55); color: white; font-size: 10px; font-weight: bold; padding: 4px 8px; border-top-left-radius: 7px; border-bottom-right-radius: 7px; box-shadow: 2px 2px 5px rgba(0,0,0,0.1); text-transform: uppercase; letter-spacing: 0.5px; }
+        .old-price { font-size: 12px; color: #94a3b8; text-decoration: line-through; }
+        .new-price { font-size: 15px; color: #fe2c55; font-weight: bold; }
+        .coin-cost-tag { font-size: 11px; color: #10b981; font-weight: bold; background: rgba(16, 185, 129, 0.08); padding: 2px 8px; border-radius: 12px; margin-top: 4px; }
+        .buy-now-btn { width: 100%; background: linear-gradient(135deg, #fe2c55, #ff007f); border: none; color: white; padding: 12px; font-size: 16px; font-weight: bold; border-radius: 6px; cursor: pointer; margin-top: 10px; display: none; box-shadow: 0 4px 15px rgba(254, 44, 85, 0.3); }
 
-        .footer { width: 100%; max-width: 460px; text-align: center; margin-top: 10px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.05); font-size: 13px; color: #475569; }
-        .badge { display: inline-block; background: linear-gradient(135deg, #10b981, #38bdf8); color: #020617; padding: 6px 15px; border-radius: 20px; font-weight: bold; letter-spacing: 0.5px; margin-top: 8px; }
+        .footer { text-align: center; margin-top: 30px; font-size: 13px; color: #94a3b8; width: 100%; border-top: 1px solid #e2e8f0; padding-top: 15px; }
+        .badge { display: inline-block; background: linear-gradient(135deg, #fe2c55, #38bdf8); color: white; padding: 5px 15px; border-radius: 20px; font-weight: bold; margin-top: 5px; font-size: 12px; }
     </style>
 </head>
 <body>
 
-<!-- LOADER SCREEN POSITIONED IN EXACT MID -->
-<div id="splash-screen">
-    <div class="hacker-logo"><i class="fa-solid fa-terminal"></i></div>
-    <div class="hacker-text">TASIR_ABBAS_SYSTEM...</div>
+<!-- TOPUP.PK OFFICIAL TOPBAR CLONE -->
+<div class="garena-header">
+    <div class="garena-logo"><i class="fa-solid fa-fire"></i> Garena</div>
+    <div class="header-sep"></div>
+    <div class="header-title">Official Top Up Center</div>
 </div>
 
-<!-- APP HEADER MODULE -->
-<div class="app-header">
-    <div class="app-title"><i class="fa-solid fa-cube"></i> Grena Top-Up PK</div>
-    <div class="developer-tag">// CYBER NODE NETWORK ACTIVE</div>
-</div>
-
-<!-- WALLET ACCOUNT PANEL -->
-<div class="wallet-card">
-    <div>
-        <div class="wallet-label">SECURE_COIN_BAL</div>
-        <div class="wallet-balance"><i class="fa-solid fa-database"></i> <span id="coinBalance">0</span></div>
-    </div>
-    <div style="text-align: right;">
-        <div class="wallet-label">ENCRYPTION</div>
-        <div style="color: #10b981; font-weight: bold; font-size: 13px;"><i class="fa-solid fa-shield"></i> AES_256</div>
-    </div>
-</div>
-
-<div class="app-container">
-    <!-- FIXED TIKTOK FOLLOW REDIRECT MODULE FOR TASIR ABBAS -->
-    <div class="section-box">
-        <div class="section-title"><i class="fa-brands fa-tiktok" style="color: #fe2c55;"></i> Main Developer Growth Node</div>
-        <!-- Aap ka real TikTok link ab yahan pehle se pakka set hai -->
-        <input type="text" id="customTargetLink" class="uid-input" style="color: #fe2c55; border-color: #fe2c55;" value="https://www.tiktok.com/@tasirdeveloper?is_from_webapp=1&sender_device=pc" readonly>
-        <button class="link-btn" onclick="executeLinkRedirect()"><i class="fa-solid fa-bolt"></i> Execute & Follow</button>
-    </div>
-
-    <!-- 8 DECOMPRESS AD NODES MODULE -->
-    <div class="section-box">
-        <div class="section-title"><i class="fa-solid fa-circle-play" style="color: #10b981;"></i> Decompress Ad Terminals (8 Nodes)</div>
-        <div class="task-grid">
-            <div class="task-card">
-                <div class="task-info"><h4>Node 01</h4><p>+25 Coins</p></div>
-                <button class="action-btn" onclick="watchVideoAd(1)">DECRYPT</button>
+<div class="main-app">
+    <!-- STEP 1: ACCOUNT SEARCH -->
+    <div class="content-card">
+        <div class="card-title"><span class="step-num">1</span> Player Login Matrix</div>
+        <input type="text" id="playerUID" class="uid-input-box" placeholder="Enter Free Fire Player ID (UID)">
+        <button class="search-btn" id="searchBtn" onclick="fetchPlayerAccount()"><i class="fa-solid fa-magnifying-glass"></i> Authenticate Game Account</button>
+        
+        <!-- Live Fetched Account Target Card -->
+        <div class="account-display" id="accountBox">
+            <div class="user-avatar"><i class="fa-solid fa-shield-halved"></i></div>
+            <div>
+                <div class="user-name-node" id="accountName">🛡️ FETCHING_LIVE_NODE...</div>
+                <div class="user-id-node">Player ID: <span id="accountID">000000</span></div>
             </div>
-            <div class="task-card">
-                <div class="task-info"><h4>Node 02</h4><p>+25 Coins</p></div>
-                <button class="action-btn" onclick="watchVideoAd(2)">DECRYPT</button>
-            </div>
-            <div class="task-card">
-                <div class="task-info"><h4>Node 03</h4><p>+25 Coins</p></div>
-                <button class="action-btn" onclick="watchVideoAd(3)">DECRYPT</button>
-            </div>
-            <div class="task-card">
-                <div class="task-info"><h4>Node 04</h4><p>+25 Coins</p></div>
-                <button class="action-btn" onclick="watchVideoAd(4)">DECRYPT</button>
-            </div>
-            <div class="task-card">
-                <div class="task-info"><h4>Node 05</h4><p>+25 Coins</p></div>
-                <button class="action-btn" onclick="watchVideoAd(5)">DECRYPT</button>
-            </div>
-            <div class="task-card">
-                <div class="task-info"><h4>Node 06</h4><p>+25 Coins</p></div>
-                <button class="action-btn" onclick="watchVideoAd(6)">DECRYPT</button>
-            </div>
-            <div class="task-card">
-                <div class="task-info"><h4>Node 07</h4><p>+25 Coins</p></div>
-                <button class="action-btn" onclick="watchVideoAd(7)">DECRYPT</button>
-            </div>
-            <div class="task-card">
-                <div class="task-info"><h4>Node 08</h4><p>+25 Coins</p></div>
-                <button class="action-btn" onclick="watchVideoAd(8)">DECRYPT</button>
-            </div>
+            <div style="margin-left: auto; color: #10b981; font-weight: bold; font-size: 13px;"><i class="fa-solid fa-circle-check"></i> VERIFIED</div>
         </div>
     </div>
 
-    <!-- PLAYER GAME ID -->
-    <div class="section-box">
-        <div class="section-title"><i class="fa-solid fa-fingerprint" style="color: #38bdf8;"></i> Target Player ID Matrix</div>
-        <input type="text" id="playerUID" class="uid-input" placeholder="ENTER GAME PLAYER UID NODE">
+    <!-- STEP 2: WATCH ADS ENGINE -->
+    <div class="content-card">
+        <div class="coin-bar">
+            <span><i class="fa-solid fa-wallet"></i> DISCOUNT_COIN_BAL:</span>
+            <span style="color: #eab308;"><span id="coinBalance">0</span> COINS</span>
+        </div>
+        <div class="card-title" style="margin-top: 15px;"><span class="step-num">2</span> Earn Coins for 25% Off Sale</div>
+        <div class="ad-grid">
+            <button class="ad-btn" onclick="watchVideoAd(1)"><i class="fa-solid fa-terminal"></i> NODE_01</button>
+            <button class="ad-btn" onclick="watchVideoAd(2)"><i class="fa-solid fa-terminal"></i> NODE_02</button>
+            <button class="ad-btn" onclick="watchVideoAd(3)"><i class="fa-solid fa-terminal"></i> NODE_03</button>
+            <button class="ad-btn" onclick="watchVideoAd(4)"><i class="fa-solid fa-terminal"></i> NODE_04</button>
+            <button class="ad-btn" onclick="watchVideoAd(5)"><i class="fa-solid fa-terminal"></i> NODE_05</button>
+            <button class="ad-btn" onclick="watchVideoAd(6)"><i class="fa-solid fa-terminal"></i> NODE_06</button>
+        </div>
     </div>
 
-    <!-- STORE MARKET -->
-    <div class="section-box">
-        <div class="section-title"><i class="fa-solid fa-server" style="color: #eab308;"></i> Diamond Matrix Store</div>
-        <div class="store-grid">
-            <div class="store-item">
-                <div style="font-size: 26px;">💎</div>
-                <div style="font-weight: bold; font-size: 13px; color: #f8fafc;">13 Diamonds (FF)</div>
-                <div class="item-cost">600 Coins</div>
-                <div style="font-size: 11px; color: #64748b;">+ Rs. 17 Cash</div>
-                <button class="claim-btn" onclick="claimReward('13 Diamonds', 600)">CLAIM NODE</button>
+    <!-- STEP 3: DARAZ STYLE DIAMOND SELECTION -->
+    <div class="content-card">
+        <div class="card-title"><span class="step-num">3</span> Select Discount Amount</div>
+        <div class="diamond-grid">
+            <!-- 13 Diamonds Card -->
+            <div class="diamond-card" onclick="selectDiamond('13 Diamonds', 17, 600)">
+                <div class="sale-tag">25% OFF</div>
+                <div class="diamond-icon"><i class="fa-solid fa-gem"></i></div>
+                <div class="dia-count">💎 13</div>
+                <div class="old-price">Rs. 20</div>
+                <div class="new-price">Rs. 17</div>
+                <div class="coin-cost-tag">Cost: 600 Coins</div>
             </div>
-            <div class="store-item">
-                <div style="font-size: 26px;">⚜️</div>
-                <div style="font-weight: bold; font-size: 13px; color: #f8fafc;">8 UC (PUBG)</div>
-                <div class="item-cost">600 Coins</div>
-                <div style="font-size: 11px; color: #64748b;">+ Rs. 18 Cash</div>
-                <button class="claim-btn" onclick="claimReward('8 UC', 600)">CLAIM NODE</button>
+            <!-- 35 Diamonds Card -->
+            <div class="diamond-card" onclick="selectDiamond('35 Diamonds', 45, 1200)">
+                <div class="sale-tag">25% OFF</div>
+                <div class="diamond-icon"><i class="fa-solid fa-gem"></i></div>
+                <div class="dia-count">💎 35</div>
+                <div class="old-price">Rs. 60</div>
+                <div class="new-price">Rs. 45</div>
+                <div class="coin-cost-tag">Cost: 1200 Coins</div>
+            </div>
+            <!-- 70 Diamonds Card -->
+            <div class="diamond-card" onclick="selectDiamond('70 Diamonds', 75, 2000)">
+                <div class="sale-tag">25% OFF</div>
+                <div class="diamond-icon"><i class="fa-solid fa-gem"></i></div>
+                <div class="dia-count">💎 70</div>
+                <div class="old-price">Rs. 100</div>
+                <div class="new-price">Rs. 75</div>
+                <div class="coin-cost-tag">Cost: 2000 Coins</div>
+            </div>
+            <!-- 140 Diamonds Card -->
+            <div class="diamond-card" onclick="selectDiamond('140 Diamonds', 150, 3500)">
+                <div class="sale-tag">25% OFF</div>
+                <div class="diamond-icon"><i class="fa-solid fa-gem"></i></div>
+                <div class="dia-count">💎 140</div>
+                <div class="old-price">Rs. 200</div>
+                <div class="new-price">Rs. 150</div>
+                <div class="coin-cost-tag">Cost: 3500 Coins</div>
             </div>
         </div>
+        
+        <button class="buy-now-btn" id="buyNowBtn" onclick="checkoutVoucher()">PROCEED TO BUY NOW</button>
     </div>
 </div>
 
 <div class="footer">
-    <p>Grena Top-Up PK Secure App Node Platform</p>
+    <p>Garena Official Top Up Core Handshake Platform</p>
     <div class="badge">Tasir Abbas Developer Taunsa</div>
 </div>
 
 <script>
-    // Centered Movie Loader Timer (2.2 Seconds)
-    window.addEventListener('load', () => {
-        setTimeout(() => {
-            const splash = document.getElementById('splash-screen');
-            if (splash) { splash.style.opacity = '0'; splash.style.visibility = 'hidden'; }
-        }, 2200);
-    });
-
-    // Real Points Local State
-    let userCoins = parseInt(localStorage.getItem('garena_sys_coins')) || 0;
+    let userCoins = parseInt(localStorage.getItem('clone_sys_coins')) || 0;
     document.getElementById('coinBalance').innerText = userCoins;
+    
+    let selectedItem = null;
 
-    // Custom Variable Link Executor
-    function executeLinkRedirect() {
-        let inputLink = document.getElementById('customTargetLink').value.trim();
-        if (!inputLink) {
-            alert("Security Alert: Custom redirection link slot is completely blank! Please input a target address. ❌");
+    // Simulate Real Account Database Fetching Node
+    function fetchPlayerAccount() {
+        const uid = document.getElementById('playerUID').value.trim();
+        if (!uid || isNaN(uid)) {
+            alert("Security Error: Please enter a valid numeric Game Player UID node! ❌");
             return;
         }
         
-        // Auto prepends https if user types a simple short link like bit.ly
-        if (!inputLink.startsWith('http://') && !inputLink.startsWith('https://')) {
-            inputLink = 'https://' + inputLink;
+        const searchBtn = document.getElementById('searchBtn');
+        searchBtn.innerText = "DECRYPTING ACCOUNT MATRIX... ⏳";
+        searchBtn.disabled = true;
+
+        setTimeout(() => {
+            document.getElementById('accountBox').style.display = 'flex';
+            document.getElementById('accountID').innerText = uid;
+            
+            // Simulates anonymous encrypted naming based on UID length
+            document.getElementById('accountName').innerText = "⚔️ FreeFire_User_" + uid.slice(0,4) + " ⚔️";
+            
+            searchBtn.innerText = "Account Synced Successfully! ✅";
+            alert("Handshake Complete! User database node localized safely.");
+        }, 1800);
+    }
+
+    function watchVideoAd(id) {
+        alert("Connecting to Ad Stream Core Terminal Node " + id + "... 🎬");
+        setTimeout(() => {
+            userCoins += 50;
+            localStorage.setItem('clone_sys_coins', userCoins);
+            document.getElementById('coinBalance').innerText = userCoins;
+            alert("Data Token Verified! Node " + id + " execution complete. ✅\n+50 Coins credited to your address node.");
+        }, 1500);
+    }
+
+    function selectDiamond(name, price, cost) {
+        const uid = document.getElementById('playerUID').value.trim();
+        if (document.getElementById('accountBox').style.display !== 'flex') {
+            alert("Handshake Blocked: Please search and verify your Player ID first in Step 1! 🔒");
+            return;
+        }
+        
+        selectedItem = { name, price, cost };
+        
+        // Highlights the action button exactly like buy now button
+        const buyBtn = document.getElementById('buyNowBtn');
+        buyBtn.style.display = 'block';
+        buyBtn.innerText = "BUY NOW: " + name + " for Rs. " + price + " (Voucher Cost: " + cost + " Coins)";
+    }
+
+    function checkoutVoucher() {
+        if (!selectedItem) return;
+        if (userCoins < selectedItem.cost) {
+            alert("Transaction Aborted: Insufficient Discount Coins! ❌\nYou need " + (selectedItem.cost - userCoins) + " more coins. Watch more ads to unlock the 25% sale price!");
+            return;
         }
 
-        alert("Initializing Link Redirect Handshake... 🚀\nTarget Destination: " + inputLink);
-        window.open(inputLink, "_blank");
-
-        // Reward 100 coins for link tracking task execution
-        setTimeout(() => {
-            userCoins += 100;
-            localStorage.setItem('garena_sys_coins', userCoins);
-            document.getElementById('coinBalance').innerText = userCoins;
-            alert("Verification Node Synced! ✅\n+100 Coins added for link interaction task.");
-        }, 2500);
-    }
-
-    // 8 Ad Terminals Execution Core
-    function watchVideoAd(nodeId) {
-        alert("Connecting to Ad Server Core Node " + nodeId + "... 🎬");
-        setTimeout(() => {
-            userCoins += 25;
-            localStorage.setItem('garena_sys_coins', userCoins);
-            document.getElementById('coinBalance').innerText = userCoins;
-            alert("Data Stream Verified! Terminal Node " + nodeId + " execution complete. ✅\n+25 Coins credited to address balance.");
-        }, 2000);
-    }
-
-    function claimReward(itemName, coinCost) {
-        const uid = document.getElementById('playerUID').value.trim();
-        if (!uid) { alert("Security Error: Target Game UID is completely empty! ❌"); return; }
-        if (userCoins < coinCost) { alert("Transaction Terminated: Insufficient Coin Node Balance! ❌"); return; }
-
-        userCoins -= coinCost;
-        localStorage.setItem('garena_sys_coins', userCoins);
+        userCoins -= selectedItem.cost;
+        localStorage.setItem('clone_sys_coins', userCoins);
         document.getElementById('coinBalance').innerText = userCoins;
-        alert("Voucher Node Token Reserved! 🎉\n\nItem: " + itemName + "\nTarget ID: " + uid + "\n\nInstructions: Send a screenshot of this node token to Tasir Abbas WhatsApp. Send EasyPaisa to activate!");
+
+        const uid = document.getElementById('playerUID').value.trim();
+        
+        alert("Voucher Node Reserved Successfully! 🎫🎉\n\nPackage: " + selectedItem.name + "\nTarget UID: " + uid + "\nSale Price: Rs. " + selectedItem.price + " (25% Saved!)\n\nInstructions: Send this screenshot token to Tasir Abbas WhatsApp. Pay Rs. " + selectedItem.price + " via EasyPaisa to claim instant delivery node! ⚡");
     }
 </script>
 </body>
