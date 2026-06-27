@@ -14,7 +14,6 @@
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Courier New', Courier, monospace; }
         
-        /* Premium Dark Cyber Matrix Grey Background */
         body { 
             background: #0f172a; 
             color: #38bdf8; 
@@ -53,9 +52,9 @@
         .ad-btn { background: #020617; color: #10b981; border: 1px solid #1e293b; border-left: 4px solid #10b981; padding: 12px 10px; font-weight: bold; border-radius: 6px; cursor: pointer; font-size: 12px; display: flex; flex-direction: column; align-items: center; gap: 5px; }
         .ad-btn.completed { border-left-color: #eab308; color: #eab308; pointer-events: none; }
 
-        /* Diamond Grid Cards Layout */
+        /* Diamond Grid Cards Layout (Supports large lists like real topup.pk) */
         .diamond-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; }
-        .diamond-card { background: #070a13; border: 1px solid #1e293b; border-radius: 8px; padding: 22px 12px; text-align: center; position: relative; display: flex; flex-direction: column; align-items: center; gap: 5px; cursor: pointer; }
+        .diamond-card { background: #070a13; border: 1px solid #1e293b; border-radius: 8px; padding: 25px 12px; text-align: center; position: relative; display: flex; flex-direction: column; align-items: center; gap: 5px; cursor: pointer; }
         .diamond-card:hover { border-color: #fe2c55; box-shadow: 0 0 15px rgba(254, 44, 85, 0.15); }
         .diamond-icon { font-size: 24px; color: #38bdf8; }
         .dia-count { font-size: 15px; font-weight: bold; color: #f8fafc; }
@@ -116,12 +115,12 @@
         </div>
     </div>
 
-    <!-- STEP 3: STORE WITH LIMITED TIME TIMER ON 70+ DIAMONDS -->
+    <!-- STEP 3: STORE WITH REAL 14,260 DIAMONDS GRID ARRAY -->
     <div class="content-card">
         <div class="card-title"><span class="step-num">3</span> Select Market Discount Product</div>
         <div class="diamond-grid">
-            <!-- 13 Diamonds (Normal) -->
-            <div class="diamond-card" onclick="selectDiamond('13 Diamonds', 17, 600)">
+            <!-- 13 Diamonds (No Limit) -->
+            <div class="diamond-card" onclick="selectDiamond('13 Diamonds', 17, 600, false)">
                 <div class="sale-tag">25% OFF</div>
                 <div class="diamond-icon"><i class="fa-gem fa-solid"></i></div>
                 <div class="dia-count">💎 13</div>
@@ -130,8 +129,8 @@
                 <div class="coin-cost-tag">600 Coins</div>
             </div>
             
-            <!-- 35 Diamonds (Normal) -->
-            <div class="diamond-card" onclick="selectDiamond('35 Diamonds', 45, 1200)">
+            <!-- 35 Diamonds (No Limit) -->
+            <div class="diamond-card" onclick="selectDiamond('35 Diamonds', 45, 1200, false)">
                 <div class="sale-tag">25% OFF</div>
                 <div class="diamond-icon"><i class="fa-gem fa-solid"></i></div>
                 <div class="dia-count">💎 35</div>
@@ -140,26 +139,91 @@
                 <div class="coin-cost-tag">1200 Coins</div>
             </div>
 
-            <!-- 70 Diamonds (LIMITED TIME TIMER) -->
-            <div class="diamond-card" onclick="selectDiamond('70 Diamonds', 75, 2000)">
+            <!-- 70 Diamonds (No Limit) -->
+            <div class="diamond-card" onclick="selectDiamond('70 Diamonds', 75, 2000, false)">
                 <div class="sale-tag">25% OFF</div>
-                <div class="timer-tag" id="countdownTimer">01:45:00</div>
-                <div class="diamond-icon"><i class="fa-gem fa-solid" style="color: #eab308;"></i></div>
+                <div class="diamond-icon"><i class="fa-gem fa-solid"></i></div>
                 <div class="dia-count">💎 70</div>
                 <div class="old-price">Rs. 100</div>
                 <div class="new-price">Rs. 75</div>
                 <div class="coin-cost-tag">2000 Coins</div>
             </div>
 
-            <!-- 140 Diamonds (LIMITED TIME TIMER) -->
-            <div class="diamond-card" onclick="selectDiamond('140 Diamonds', 150, 3500)">
+            <!-- 140 Diamonds (9 PM Countdown Timer Live) -->
+            <div class="diamond-card" onclick="selectDiamond('140 Diamonds', 150, 3500, true)">
                 <div class="sale-tag">25% OFF</div>
-                <div class="timer-tag" id="countdownTimer2">01:45:00</div>
+                <div class="timer-tag countdownNode">9PM LMT</div>
                 <div class="diamond-icon"><i class="fa-gem fa-solid" style="color: #eab308;"></i></div>
                 <div class="dia-count">💎 140</div>
                 <div class="old-price">Rs. 200</div>
                 <div class="new-price">Rs. 150</div>
                 <div class="coin-cost-tag">3500 Coins</div>
+            </div>
+
+            <!-- 355 Diamonds (9 PM Countdown Timer Live) -->
+            <div class="diamond-card" onclick="selectDiamond('355 Diamonds', 375, 6000, true)">
+                <div class="sale-tag">25% OFF</div>
+                <div class="timer-tag countdownNode">9PM LMT</div>
+                <div class="diamond-icon"><i class="fa-gem fa-solid" style="color: #eab308;"></i></div>
+                <div class="dia-count">💎 355</div>
+                <div class="old-price">Rs. 500</div>
+                <div class="new-price">Rs. 375</div>
+                <div class="coin-cost-tag">6000 Coins</div>
+            </div>
+
+            <!-- 713 Diamonds (9 PM Countdown Timer Live) -->
+            <div class="diamond-card" onclick="selectDiamond('713 Diamonds', 750, 9500, true)">
+                <div class="sale-tag">25% OFF</div>
+                <div class="timer-tag countdownNode">9PM LMT</div>
+                <div class="diamond-icon"><i class="fa-gem fa-solid" style="color: #eab308;"></i></div>
+                <div class="dia-count">💎 713</div>
+                <div class="old-price">Rs. 1000</div>
+                <div class="new-price">Rs. 750</div>
+                <div class="coin-cost-tag">9500 Coins</div>
+            </div>
+
+            <!-- 1,426 Diamonds (9 PM Countdown Timer Live) -->
+            <div class="diamond-card" onclick="selectDiamond('1426 Diamonds', 1500, 15000, true)">
+                <div class="sale-tag">25% OFF</div>
+                <div class="timer-tag countdownNode">9PM LMT</div>
+                <div class="diamond-icon"><i class="fa-gem fa-solid" style="color: #eab308;"></i></div>
+                <div class="dia-count">💎 1,426</div>
+                <div class="old-price">Rs. 2000</div>
+                <div class="new-price">Rs. 1500</div>
+                <div class="coin-cost-tag">15000 Coins</div>
+            </div>
+
+            <!-- 3,565 Diamonds (9 PM Countdown Timer Live) -->
+            <div class="diamond-card" onclick="selectDiamond('3565 Diamonds', 3750, 25000, true)">
+                <div class="sale-tag">25% OFF</div>
+                <div class="timer-tag countdownNode">9PM LMT</div>
+                <div class="diamond-icon"><i class="fa-gem fa-solid" style="color: #eab308;"></i></div>
+                <div class="dia-count">💎 3,565</div>
+                <div class="old-price">Rs. 5000</div>
+                <div class="new-price">Rs. 3750</div>
+                <div class="coin-cost-tag">25000 Coins</div>
+            </div>
+
+            <!-- 7,130 Diamonds (9 PM Countdown Timer Live) -->
+            <div class="diamond-card" onclick="selectDiamond('7130 Diamonds', 7500, 42000, true)">
+                <div class="sale-tag">25% OFF</div>
+                <div class="timer-tag countdownNode">9PM LMT</div>
+                <div class="diamond-icon"><i class="fa-gem fa-solid" style="color: #eab308;"></i></div>
+                <div class="dia-count">💎 7,130</div>
+                <div class="old-price">Rs. 10000</div>
+                <div class="new-price">Rs. 7500</div>
+                <div class="coin-cost-tag">42000 Coins</div>
+            </div>
+
+            <!-- 14,260 Diamonds MAX (9 PM Countdown Timer Live) -->
+            <div class="diamond-card" onclick="selectDiamond('14260 Diamonds', 15000, 75000, true)">
+                <div class="sale-tag">25% OFF</div>
+                <div class="timer-tag countdownNode">9PM LMT</div>
+                <div class="diamond-icon"><i class="fa-gem fa-solid" style="color: #eab308;"></i></div>
+                <div class="dia-count">💎 14,260</div>
+                <div class="old-price">Rs. 20000</div>
+                <div class="new-price">Rs. 15000</div>
+                <div class="coin-cost-tag">75000 Coins</div>
             </div>
         </div>
         <button class="buy-now-btn" id="buyNowBtn" onclick="checkoutVoucher()">PROCEED TO EXECUTE ORDER</button>
@@ -173,35 +237,47 @@
 
 <script>
     let userCoins = parseInt(localStorage.getItem('clone_sys_coins')) || 0;
-    document.getElementById('coinBalance').innerText = userCoins;
-    
-    let selectedItem = null;
-
-    // Countdown Live Logic for 70+ Diamond Limited Time Slots
-    let totalSeconds = 6300; // 1 hour and 45 minutes fixed count matrix
-    function startTimer() {
+    // Real-time Countdown Timer Logic targeting exactly 9:00 PM Tonight
+    function startRealTimeTimer() {
         setInterval(() => {
-            if (totalSeconds <= 0) { totalSeconds = 6300; } // Resets loop safely
-            totalSeconds--;
+            const now = new Date();
+            const tonight9PM = new Date();
             
-            let hrs = Math.floor(totalSeconds / 3600);
-            let mins = Math.floor((totalSeconds % 3600) / 60);
-            let secs = totalSeconds % 60;
+            tonight9PM.setHours(21, 0, 0, 0); // Target Set to 9:00 PM (21:00)
 
-            let format = (hrs < 10 ? "0" : "") + hrs + ":" + (mins < 10 ? "0" : "") + mins + ":" + (secs < 10 ? "0" : "") + secs;
+            // If it is already past 9 PM, target 9 PM of the next day
+            if (now.getTime() > tonight9PM.getTime()) {
+                tonight9PM.setDate(tonight9PM.getDate() + 1);
+            }
+
+            let diff = tonight9PM.getTime() - now.getTime();
             
-            document.getElementById('countdownTimer').innerText = format;
-            document.getElementById('countdownTimer2').innerText = format;
+            let hrs = Math.floor(diff / (1000 * 60 * 60));
+            let mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            let secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+            let format = (hrs < 10 ? "0" : "") + hrs + ":" + 
+                         (mins < 10 ? "0" : "") + mins + ":" + 
+                         (secs < 10 ? "0" : "") + secs;
+            
+            // Injecting timer to all cards starting from 70 diamonds up to 14260
+            const timers = document.querySelectorAll('.timer-tag');
+            timers.forEach(t => t.innerText = format);
         }, 1000);
     }
-    startTimer();
+    startRealTimeTimer();
 
+    // Account Search Handler System
     function fetchPlayerAccount() {
         const uid = document.getElementById('playerUID').value.trim();
-        if (!uid || isNaN(uid)) { alert("Security Error: Invalid Game UID! ❌"); return; }
+        if (!uid || isNaN(uid)) { 
+            alert("Security Error: Invalid Game UID! Please enter numbers only. ❌"); 
+            return; 
+        }
         
         const btn = document.getElementById('searchBtn');
-        btn.innerText = "DECRYPTING ACCOUNT MATRIX... ⏳"; btn.disabled = true;
+        btn.innerText = "DECRYPTING ACCOUNT MATRIX... ⏳"; 
+        btn.disabled = true;
 
         setTimeout(() => {
             document.getElementById('accountBox').style.display = 'flex';
@@ -211,6 +287,7 @@
         }, 1500);
     }
 
+    // 8 Ads Nodes Handler
     function watchVideoAd(id) {
         alert("Bypassing Server Stream Node " + id + "... 🎬");
         setTimeout(() => {
@@ -227,9 +304,11 @@
         }, 1500);
     }
 
+    // Diamond Selection Function
     function selectDiamond(name, price, cost) {
         if (document.getElementById('accountBox').style.display !== 'flex') {
-            alert("Handshake Blocked: Search and sync your Player ID first in Step 1! 🔒"); return;
+            alert("Handshake Blocked: Search and sync your Player ID first in Step 1! 🔒"); 
+            return;
         }
         
         selectedItem = { name, price, cost };
@@ -238,10 +317,12 @@
         buyBtn.innerText = "BUY NOW: " + name + " (Cost: " + cost + " Coins)";
     }
 
+    // Secure Checkout Operation
     function checkoutVoucher() {
         if (!selectedItem) return;
         if (userCoins < selectedItem.cost) {
-            alert("Transaction Failed: Insufficient Coins Node! ❌ Watch more tasks to unlock discount."); return;
+            alert("Transaction Failed: Insufficient Coins! ❌ Watch more tasks to unlock discount."); 
+            return;
         }
 
         userCoins -= selectedItem.cost;
@@ -249,7 +330,7 @@
         document.getElementById('coinBalance').innerText = userCoins;
 
         const uid = document.getElementById('playerUID').value.trim();
-        alert("Voucher Reserved! 🎫🎉\n\nPackage: " + selectedItem.name + "\nTarget UID: " + uid + "\nSale Price: Rs. " + selectedItem.price + "\n\nInstructions: Send this screenshot to Tasir Abbas WhatsApp. Pay Rs. " + selectedItem.price + " via EasyPaisa for instant topup node!");
+        alert("Voucher Reserved! 🎫\n\nPackage: " + selectedItem.name + "\nTarget ID: " + uid + "\nSale Price: Rs. " + selectedItem.price + "\n\nInstructions: Send this screenshot to Tasir Abbas WhatsApp. Pay via EasyPaisa for instant topup node!");
     }
 </script>
 </body>
