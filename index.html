@@ -48,22 +48,21 @@
         /* Wallet Points Bar */
         .coin-bar { background: #020617; color: white; display: flex; justify-content: space-between; padding: 14px 20px; border-radius: 6px; font-weight: bold; margin-bottom: 10px; font-size: 14px; border: 1px solid #1e293b; }
 
-        /* Tasks Grid Layout */
+        /* Tasks Grid Layout (Fixed 8 Nodes) */
         .ad-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-top: 10px; }
         .ad-btn { background: #020617; color: #10b981; border: 1px solid #1e293b; border-left: 4px solid #10b981; padding: 12px 10px; font-weight: bold; border-radius: 6px; cursor: pointer; font-size: 12px; display: flex; flex-direction: column; align-items: center; gap: 5px; }
         .ad-btn.completed { border-left-color: #eab308; color: #eab308; pointer-events: none; }
-        .hidden-node { display: none !important; }
 
         /* Diamond Grid Cards Layout */
         .diamond-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; }
-        .diamond-card { background: #070a13; border: 1px solid #1e293b; border-radius: 8px; padding: 18px 12px; text-align: center; position: relative; display: flex; flex-direction: column; align-items: center; gap: 5px; cursor: pointer; }
+        .diamond-card { background: #070a13; border: 1px solid #1e293b; border-radius: 8px; padding: 22px 12px; text-align: center; position: relative; display: flex; flex-direction: column; align-items: center; gap: 5px; cursor: pointer; }
         .diamond-card:hover { border-color: #fe2c55; box-shadow: 0 0 15px rgba(254, 44, 85, 0.15); }
         .diamond-icon { font-size: 24px; color: #38bdf8; }
         .dia-count { font-size: 15px; font-weight: bold; color: #f8fafc; }
         
         /* Tags & Prices Setup */
         .sale-tag { position: absolute; top: 0; left: 0; background: #fe2c55; color: white; font-size: 9px; font-weight: bold; padding: 3px 6px; border-top-left-radius: 7px; border-bottom-right-radius: 7px; text-transform: uppercase; }
-        .limit-tag { position: absolute; top: 0; right: 0; background: #eab308; color: #020617; font-size: 8px; font-weight: bold; padding: 3px 6px; border-top-right-radius: 7px; border-bottom-left-radius: 7px; text-transform: uppercase; }
+        .timer-tag { position: absolute; top: 0; right: 0; background: #eab308; color: #020617; font-size: 8px; font-weight: bold; padding: 3px 6px; border-top-right-radius: 7px; border-bottom-left-radius: 7px; font-family: monospace; }
         .old-price { font-size: 11px; color: #475569; text-decoration: line-through; }
         .new-price { font-size: 14px; color: #fe2c55; font-weight: bold; }
         .coin-cost-tag { font-size: 11px; color: #10b981; font-weight: bold; background: rgba(16, 185, 129, 0.1); padding: 2px 8px; border-radius: 12px; margin-top: 4px; }
@@ -98,53 +97,65 @@
         </div>
     </div>
 
-    <!-- STEP 2: REWARD TERMINALS (TICK MARKS & HIDDEN NODES) -->
+    <!-- STEP 2: FIXED 8 ADS TERMINALS WITH TICK MARKS -->
     <div class="content-card">
         <div class="coin-bar">
             <span><i class="fa-solid fa-database"></i> DISCOUNT_COIN_BAL:</span>
             <span style="color: #eab308;"><span id="coinBalance">0</span> COINS</span>
         </div>
-        <div class="card-title" style="margin-top: 15px;"><span class="step-num">2</span> Complete Tasks to Unlock Discount</div>
+        <div class="card-title" style="margin-top: 15px;"><span class="step-num">2</span> Complete Tasks to Earn Coins</div>
         <div class="ad-grid">
-            <!-- Normal Visible Nodes -->
             <button class="ad-btn" id="adNode1" onclick="watchVideoAd(1)"><span>NODE_01</span><span id="tick1">▶ RUN</span></button>
             <button class="ad-btn" id="adNode2" onclick="watchVideoAd(2)"><span>NODE_02</span><span id="tick2">▶ RUN</span></button>
             <button class="ad-btn" id="adNode3" onclick="watchVideoAd(3)"><span>NODE_03</span><span id="tick3">▶ RUN</span></button>
             <button class="ad-btn" id="adNode4" onclick="watchVideoAd(4)"><span>NODE_04</span><span id="tick4">▶ RUN</span></button>
-            
-            <!-- Hidden Nodes (Will appear after first 4 are completed) -->
-            <button class="ad-btn hidden-node" id="adNode5" onclick="watchVideoAd(5)"><span>NODE_05</span><span id="tick5">▶ RUN</span></button>
-            <button class="ad-btn hidden-node" id="adNode6" onclick="watchVideoAd(6)"><span>NODE_06</span><span id="tick6">▶ RUN</span></button>
-            <button class="ad-btn hidden-node" id="adNode7" onclick="watchVideoAd(7)"><span>NODE_07</span><span id="tick7">▶ RUN</span></button>
-            <button class="ad-btn hidden-node" id="adNode8" onclick="watchVideoAd(8)"><span>NODE_08</span><span id="tick8">▶ RUN</span></button>
+            <button class="ad-btn" id="adNode5" onclick="watchVideoAd(5)"><span>NODE_05</span><span id="tick5">▶ RUN</span></button>
+            <button class="ad-btn" id="adNode6" onclick="watchVideoAd(6)"><span>NODE_06</span><span id="tick6">▶ RUN</span></button>
+            <button class="ad-btn" id="adNode7" onclick="watchVideoAd(7)"><span>NODE_07</span><span id="tick7">▶ RUN</span></button>
+            <button class="ad-btn" id="adNode8" onclick="watchVideoAd(8)"><span>NODE_08</span><span id="tick8">▶ RUN</span></button>
         </div>
     </div>
 
-    <!-- STEP 3: STORE WITH 1X DAILY LIMIT RULE -->
+    <!-- STEP 3: STORE WITH LIMITED TIME TIMER ON 70+ DIAMONDS -->
     <div class="content-card">
         <div class="card-title"><span class="step-num">3</span> Select Market Discount Product</div>
         <div class="diamond-grid">
-            <div class="diamond-card" onclick="selectDiamond('13 Diamonds', 17, 600, false)">
+            <!-- 13 Diamonds (Normal) -->
+            <div class="diamond-card" onclick="selectDiamond('13 Diamonds', 17, 600)">
                 <div class="sale-tag">25% OFF</div>
-                <div class="diamond-icon"><i class="fa-solid fa-gem"></i></div>
+                <div class="diamond-icon"><i class="fa-gem fa-solid"></i></div>
                 <div class="dia-count">💎 13</div>
                 <div class="old-price">Rs. 20</div>
                 <div class="new-price">Rs. 17</div>
                 <div class="coin-cost-tag">600 Coins</div>
             </div>
-            <!-- 70 Diamonds Card with 1x Daily Limit Rule -->
-            <div class="diamond-card" onclick="selectDiamond('70 Diamonds', 75, 2000, true)">
+            
+            <!-- 35 Diamonds (Normal) -->
+            <div class="diamond-card" onclick="selectDiamond('35 Diamonds', 45, 1200)">
                 <div class="sale-tag">25% OFF</div>
-                <div class="limit-tag">1X DAILY</div>
-                <div class="diamond-icon"><i class="fa-solid fa-gem"></i></div>
+                <div class="diamond-icon"><i class="fa-gem fa-solid"></i></div>
+                <div class="dia-count">💎 35</div>
+                <div class="old-price">Rs. 60</div>
+                <div class="new-price">Rs. 45</div>
+                <div class="coin-cost-tag">1200 Coins</div>
+            </div>
+
+            <!-- 70 Diamonds (LIMITED TIME TIMER) -->
+            <div class="diamond-card" onclick="selectDiamond('70 Diamonds', 75, 2000)">
+                <div class="sale-tag">25% OFF</div>
+                <div class="timer-tag" id="countdownTimer">01:45:00</div>
+                <div class="diamond-icon"><i class="fa-gem fa-solid" style="color: #eab308;"></i></div>
                 <div class="dia-count">💎 70</div>
                 <div class="old-price">Rs. 100</div>
                 <div class="new-price">Rs. 75</div>
                 <div class="coin-cost-tag">2000 Coins</div>
             </div>
-            <div class="diamond-card" onclick="selectDiamond('140 Diamonds', 150, 3500, false)">
+
+            <!-- 140 Diamonds (LIMITED TIME TIMER) -->
+            <div class="diamond-card" onclick="selectDiamond('140 Diamonds', 150, 3500)">
                 <div class="sale-tag">25% OFF</div>
-                <div class="diamond-icon"><i class="fa-solid fa-gem"></i></div>
+                <div class="timer-tag" id="countdownTimer2">01:45:00</div>
+                <div class="diamond-icon"><i class="fa-gem fa-solid" style="color: #eab308;"></i></div>
                 <div class="dia-count">💎 140</div>
                 <div class="old-price">Rs. 200</div>
                 <div class="new-price">Rs. 150</div>
@@ -165,7 +176,25 @@
     document.getElementById('coinBalance').innerText = userCoins;
     
     let selectedItem = null;
-    let completedAdsCount = 0;
+
+    // Countdown Live Logic for 70+ Diamond Limited Time Slots
+    let totalSeconds = 6300; // 1 hour and 45 minutes fixed count matrix
+    function startTimer() {
+        setInterval(() => {
+            if (totalSeconds <= 0) { totalSeconds = 6300; } // Resets loop safely
+            totalSeconds--;
+            
+            let hrs = Math.floor(totalSeconds / 3600);
+            let mins = Math.floor((totalSeconds % 3600) / 60);
+            let secs = totalSeconds % 60;
+
+            let format = (hrs < 10 ? "0" : "") + hrs + ":" + (mins < 10 ? "0" : "") + mins + ":" + (secs < 10 ? "0" : "") + secs;
+            
+            document.getElementById('countdownTimer').innerText = format;
+            document.getElementById('countdownTimer2').innerText = format;
+        }, 1000);
+    }
+    startTimer();
 
     function fetchPlayerAccount() {
         const uid = document.getElementById('playerUID').value.trim();
@@ -189,42 +218,21 @@
             localStorage.setItem('clone_sys_coins', userCoins);
             document.getElementById('coinBalance').innerText = userCoins;
             
-            // Updates button text to a Green Tick Option
             const nodeBtn = document.getElementById('adNode' + id);
             const tick = document.getElementById('tick' + id);
             if(nodeBtn && tick) {
                 nodeBtn.classList.add('completed');
                 tick.innerHTML = "<i class='fa-solid fa-circle-check'></i> DONE";
             }
-
-            completedAdsCount++;
-            
-            // Hidden Options Logic: Reveals next 4 hidden nodes after first 4 tasks are complete
-            if (completedAdsCount === 4) {
-                alert("🔓 SYSTEM ALERT: 4 Ad Terminals Cleared! Unlocking Hidden Premium Nodes 5, 6, 7, and 8!");
-                for (let i = 5; i <= 8; i++) {
-                    document.getElementById('adNode' + i).classList.remove('hidden-node');
-                }
-            }
         }, 1500);
     }
 
-    function selectDiamond(name, price, cost, isDailyLimited) {
+    function selectDiamond(name, price, cost) {
         if (document.getElementById('accountBox').style.display !== 'flex') {
             alert("Handshake Blocked: Search and sync your Player ID first in Step 1! 🔒"); return;
         }
-
-        // Daily Limit Check Rule for 70 Diamonds Product
-        if (isDailyLimited) {
-            const lastClaimDate = localStorage.getItem('last_claim_70_dia');
-            const today = new Date().toDateString();
-            if (lastClaimDate === today) {
-                alert("Daily Limit Reached: 70 Diamonds 25% Voucher can only be claimed 1 time per day! ❌ Come back tomorrow.");
-                return;
-            }
-        }
         
-        selectedItem = { name, price, cost, isDailyLimited };
+        selectedItem = { name, price, cost };
         const buyBtn = document.getElementById('buyNowBtn');
         buyBtn.style.display = 'block';
         buyBtn.innerText = "BUY NOW: " + name + " (Cost: " + cost + " Coins)";
@@ -239,11 +247,6 @@
         userCoins -= selectedItem.cost;
         localStorage.setItem('clone_sys_coins', userCoins);
         document.getElementById('coinBalance').innerText = userCoins;
-
-        // Saves claim date if product is daily limited
-        if (selectedItem.isDailyLimited) {
-            localStorage.setItem('last_claim_70_dia', new Date().toDateString());
-        }
 
         const uid = document.getElementById('playerUID').value.trim();
         alert("Voucher Reserved! 🎫🎉\n\nPackage: " + selectedItem.name + "\nTarget UID: " + uid + "\nSale Price: Rs. " + selectedItem.price + "\n\nInstructions: Send this screenshot to Tasir Abbas WhatsApp. Pay Rs. " + selectedItem.price + " via EasyPaisa for instant topup node!");
