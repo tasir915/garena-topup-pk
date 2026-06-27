@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Garena - Official Top Up Center Clone</title>
+    <title>Garena - Advanced Top Up Core Platform</title>
     
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://w3.org viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔥</text></svg>">
     <link rel="stylesheet" href="https://cloudflare.com">
@@ -12,146 +12,146 @@
     <script async src="https://googlesyndication.com" crossorigin="anonymous"></script>
 
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Courier New', Courier, monospace; }
         
-        body { background: #f1f5f9; color: #334155; display: flex; flex-direction: column; align-items: center; min-height: 100vh; padding-bottom: 40px; }
+        /* Premium Dark Cyber Matrix Grey Background */
+        body { 
+            background: #0f172a; 
+            color: #38bdf8; 
+            display: flex; flex-direction: column; align-items: center; 
+            min-height: 100vh; padding: 20px; gap: 20px;
+            width: 100%; overflow-x: hidden;
+        }
 
-        /* Exactly Like topup.pk Header */
-        .garena-header { width: 100%; background: #ffffff; padding: 15px 30px; border-bottom: 2px solid #e2e8f0; display: flex; align-items: center; gap: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        /* Topbar Design */
+        .garena-header { width: 100%; max-width: 750px; background: #1e293b; padding: 15px 25px; border-radius: 12px; border: 1px solid #334155; display: flex; align-items: center; gap: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
         .garena-logo { color: #fe2c55; font-size: 24px; font-weight: bold; display: flex; align-items: center; gap: 8px; font-style: italic; }
-        .header-sep { height: 25px; width: 1px; background: #cbd5e1; }
-        .header-title { font-size: 16px; color: #64748b; font-weight: 500; }
+        .header-sep { height: 25px; width: 1px; background: #475569; }
+        .header-title { font-size: 15px; color: #94a3b8; font-weight: 500; letter-spacing: 1px; }
 
-        .main-app { width: 100%; max-width: 750px; padding: 20px; display: flex; flex-direction: column; gap: 20px; margin-top: 15px; }
-        .content-card { background: #ffffff; border-radius: 8px; padding: 20px; border: 1px solid #e2e8f0; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+        .main-app { width: 100%; max-width: 750px; display: flex; flex-direction: column; gap: 20px; }
+        .content-card { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: 12px; padding: 20px; border: 1px solid rgba(56, 189, 248, 0.15); box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
         .step-num { display: inline-block; background: #fe2c55; color: white; width: 22px; height: 22px; text-align: center; border-radius: 4px; font-weight: bold; font-size: 14px; margin-right: 10px; }
-        .card-title { font-size: 18px; font-weight: bold; color: #1e293b; margin-bottom: 15px; display: flex; align-items: center; }
+        .card-title { font-size: 16px; font-weight: bold; color: #f8fafc; margin-bottom: 15px; display: flex; align-items: center; text-transform: uppercase; }
 
-        /* Real ID Insertion System */
-        .uid-input-box { width: 100%; padding: 12px 15px; border-radius: 6px; border: 1px solid #cbd5e1; font-size: 16px; font-weight: bold; outline: none; transition: 0.2s; color: #1e293b; }
-        .uid-input-box:focus { border-color: #fe2c55; box-shadow: 0 0 0 3px rgba(254, 44, 85, 0.15); }
-        .search-btn { margin-top: 10px; width: 100%; background: #fe2c55; border: none; color: white; padding: 12px; font-size: 16px; font-weight: bold; border-radius: 6px; cursor: pointer; transition: 0.2s; }
-        .search-btn:hover { background: #e11d48; }
+        /* UID Input Box */
+        .uid-input-box { width: 100%; padding: 12px 15px; border-radius: 6px; border: 1px solid #334155; background: #020617; font-size: 15px; font-weight: bold; outline: none; color: #10b981; text-align: center; }
+        .uid-input-box:focus { border-color: #fe2c55; box-shadow: 0 0 10px rgba(254, 44, 85, 0.3); }
+        .search-btn { margin-top: 10px; width: 100%; background: linear-gradient(135deg, #fe2c55, #ff007f); border: none; color: white; padding: 12px; font-size: 15px; font-weight: bold; border-radius: 6px; cursor: pointer; text-transform: uppercase; box-shadow: 0 4px 15px rgba(254, 44, 85, 0.3); }
 
-        /* Live Account Matrix Note */
-        .account-display { display: none; background: #f8fafc; border: 1px dashed #fe2c55; padding: 15px; border-radius: 6px; margin-top: 15px; align-items: center; gap: 12px; }
-        .user-avatar { width: 45px; height: 45px; background: #cbd5e1; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 20px; color: #475569; border: 2px solid #fe2c55; }
-        .user-name-node { font-weight: bold; color: #1e293b; font-size: 15px; }
-        .user-id-node { font-size: 13px; color: #64748b; }
+        /* Account Verification Card */
+        .account-display { display: none; background: #020617; border: 1px dashed #10b981; padding: 15px; border-radius: 6px; margin-top: 15px; align-items: center; gap: 12px; }
+        .user-avatar { width: 42px; height: 42px; background: #1e293b; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 18px; color: #10b981; border: 2px solid #10b981; }
+        .user-name-node { font-weight: bold; color: #f8fafc; font-size: 14px; }
+        .user-id-node { font-size: 12px; color: #64748b; }
 
-        /* Hacker Ad Terminal Grid */
-        .ad-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-top: 10px; }
-        .ad-btn { background: #0f172a; color: #10b981; border: 1px solid #10b981; padding: 10px; font-weight: bold; border-radius: 6px; cursor: pointer; font-size: 12px; display: flex; align-items: center; justify-content: center; gap: 6px; }
-        .ad-btn:hover { background: #1e293b; text-shadow: 0 0 8px #10b981; }
+        /* Wallet Points Bar */
+        .coin-bar { background: #020617; color: white; display: flex; justify-content: space-between; padding: 14px 20px; border-radius: 6px; font-weight: bold; margin-bottom: 10px; font-size: 14px; border: 1px solid #1e293b; }
 
-        /* Real Coins Balance Bar */
-        .coin-bar { background: #1e293b; color: white; display: flex; justify-content: space-between; padding: 12px 20px; border-radius: 6px; font-weight: bold; margin-bottom: 10px; font-size: 15px; }
+        /* Tasks Grid Layout */
+        .ad-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-top: 10px; }
+        .ad-btn { background: #020617; color: #10b981; border: 1px solid #1e293b; border-left: 4px solid #10b981; padding: 12px 10px; font-weight: bold; border-radius: 6px; cursor: pointer; font-size: 12px; display: flex; flex-direction: column; align-items: center; gap: 5px; }
+        .ad-btn.completed { border-left-color: #eab308; color: #eab308; pointer-events: none; }
+        .hidden-node { display: none !important; }
 
-        /* Daraz Style 25% Off Grid Layout */
-        .diamond-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; }
-        .diamond-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px 15px; text-align: center; position: relative; display: flex; flex-direction: column; align-items: center; gap: 6px; cursor: pointer; transition: 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
-        .diamond-card:hover { border-color: #fe2c55; transform: translateY(-2px); box-shadow: 0 6px 12px rgba(254, 44, 85, 0.08); }
-        .diamond-icon { font-size: 26px; color: #38bdf8; text-shadow: 0 2px 6px rgba(56,189,248,0.2); }
-        .dia-count { font-size: 16px; font-weight: bold; color: #1e293b; }
+        /* Diamond Grid Cards Layout */
+        .diamond-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; }
+        .diamond-card { background: #070a13; border: 1px solid #1e293b; border-radius: 8px; padding: 18px 12px; text-align: center; position: relative; display: flex; flex-direction: column; align-items: center; gap: 5px; cursor: pointer; }
+        .diamond-card:hover { border-color: #fe2c55; box-shadow: 0 0 15px rgba(254, 44, 85, 0.15); }
+        .diamond-icon { font-size: 24px; color: #38bdf8; }
+        .dia-count { font-size: 15px; font-weight: bold; color: #f8fafc; }
         
-        /* Daraz Style Sale Tags */
-        .sale-tag { position: absolute; top: 0; left: 0; background: linear-gradient(135deg, #ff4d4d, #fe2c55); color: white; font-size: 10px; font-weight: bold; padding: 4px 8px; border-top-left-radius: 7px; border-bottom-right-radius: 7px; box-shadow: 2px 2px 5px rgba(0,0,0,0.1); text-transform: uppercase; letter-spacing: 0.5px; }
-        .old-price { font-size: 12px; color: #94a3b8; text-decoration: line-through; }
-        .new-price { font-size: 15px; color: #fe2c55; font-weight: bold; }
-        .coin-cost-tag { font-size: 11px; color: #10b981; font-weight: bold; background: rgba(16, 185, 129, 0.08); padding: 2px 8px; border-radius: 12px; margin-top: 4px; }
-        .buy-now-btn { width: 100%; background: linear-gradient(135deg, #fe2c55, #ff007f); border: none; color: white; padding: 12px; font-size: 16px; font-weight: bold; border-radius: 6px; cursor: pointer; margin-top: 10px; display: none; box-shadow: 0 4px 15px rgba(254, 44, 85, 0.3); }
-
-        .footer { text-align: center; margin-top: 30px; font-size: 13px; color: #94a3b8; width: 100%; border-top: 1px solid #e2e8f0; padding-top: 15px; }
-        .badge { display: inline-block; background: linear-gradient(135deg, #fe2c55, #38bdf8); color: white; padding: 5px 15px; border-radius: 20px; font-weight: bold; margin-top: 5px; font-size: 12px; }
+        /* Tags & Prices Setup */
+        .sale-tag { position: absolute; top: 0; left: 0; background: #fe2c55; color: white; font-size: 9px; font-weight: bold; padding: 3px 6px; border-top-left-radius: 7px; border-bottom-right-radius: 7px; text-transform: uppercase; }
+        .limit-tag { position: absolute; top: 0; right: 0; background: #eab308; color: #020617; font-size: 8px; font-weight: bold; padding: 3px 6px; border-top-right-radius: 7px; border-bottom-left-radius: 7px; text-transform: uppercase; }
+        .old-price { font-size: 11px; color: #475569; text-decoration: line-through; }
+        .new-price { font-size: 14px; color: #fe2c55; font-weight: bold; }
+        .coin-cost-tag { font-size: 11px; color: #10b981; font-weight: bold; background: rgba(16, 185, 129, 0.1); padding: 2px 8px; border-radius: 12px; margin-top: 4px; }
+        .buy-now-btn { width: 100%; background: linear-gradient(135deg, #10b981, #059669); border: none; color: white; padding: 12px; font-size: 15px; font-weight: bold; border-radius: 6px; cursor: pointer; margin-top: 15px; display: none; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3); text-transform: uppercase; }
+        
+        .footer { text-align: center; margin-top: 25px; font-size: 12px; color: #475569; width: 100%; border-top: 1px solid #1e293b; padding-top: 15px; }
+        .badge { display: inline-block; background: linear-gradient(135deg, #fe2c55, #38bdf8); color: white; padding: 5px 15px; border-radius: 20px; font-weight: bold; margin-top: 5px; font-size: 11px; }
     </style>
 </head>
 <body>
 
-<!-- TOPUP.PK OFFICIAL TOPBAR CLONE -->
 <div class="garena-header">
-    <div class="garena-logo"><i class="fa-solid fa-fire"></i> Garena</div>
+    <div class="garena-logo"><i class="fa-solid fa-cube"></i> Garena</div>
     <div class="header-sep"></div>
-    <div class="header-title">Official Top Up Center</div>
+    <div class="header-title">Official Top Up Center Node</div>
 </div>
 
 <div class="main-app">
-    <!-- STEP 1: ACCOUNT SEARCH -->
+    <!-- STEP 1: VERIFICATION NODE -->
     <div class="content-card">
-        <div class="card-title"><span class="step-num">1</span> Player Login Matrix</div>
-        <input type="text" id="playerUID" class="uid-input-box" placeholder="Enter Free Fire Player ID (UID)">
-        <button class="search-btn" id="searchBtn" onclick="fetchPlayerAccount()"><i class="fa-solid fa-magnifying-glass"></i> Authenticate Game Account</button>
+        <div class="card-title"><span class="step-num">1</span> Player Authentication Matrix</div>
+        <input type="text" id="playerUID" class="uid-input-box" placeholder="ENTER FF PLAYER UID NODE">
+        <button class="search-btn" id="searchBtn" onclick="fetchPlayerAccount()">SYNC GAME ACCOUNT</button>
         
-        <!-- Live Fetched Account Target Card -->
         <div class="account-display" id="accountBox">
-            <div class="user-avatar"><i class="fa-solid fa-shield-halved"></i></div>
+            <div class="user-avatar"><i class="fa-solid fa-fingerprint"></i></div>
             <div>
-                <div class="user-name-node" id="accountName">🛡️ FETCHING_LIVE_NODE...</div>
-                <div class="user-id-node">Player ID: <span id="accountID">000000</span></div>
+                <div class="user-name-node" id="accountName">FETCHING_LIVE_NODE...</div>
+                <div class="user-id-node">Player ID: <span id="accountID">00000</span></div>
             </div>
-            <div style="margin-left: auto; color: #10b981; font-weight: bold; font-size: 13px;"><i class="fa-solid fa-circle-check"></i> VERIFIED</div>
+            <div style="margin-left: auto; color: #10b981; font-weight: bold; font-size: 12px;"><i class="fa-solid fa-circle-check"></i> ACTIVE</div>
         </div>
     </div>
 
-    <!-- STEP 2: WATCH ADS ENGINE -->
+    <!-- STEP 2: REWARD TERMINALS (TICK MARKS & HIDDEN NODES) -->
     <div class="content-card">
         <div class="coin-bar">
-            <span><i class="fa-solid fa-wallet"></i> DISCOUNT_COIN_BAL:</span>
+            <span><i class="fa-solid fa-database"></i> DISCOUNT_COIN_BAL:</span>
             <span style="color: #eab308;"><span id="coinBalance">0</span> COINS</span>
         </div>
-        <div class="card-title" style="margin-top: 15px;"><span class="step-num">2</span> Earn Coins for 25% Off Sale</div>
+        <div class="card-title" style="margin-top: 15px;"><span class="step-num">2</span> Complete Tasks to Unlock Discount</div>
         <div class="ad-grid">
-            <button class="ad-btn" onclick="watchVideoAd(1)"><i class="fa-solid fa-terminal"></i> NODE_01</button>
-            <button class="ad-btn" onclick="watchVideoAd(2)"><i class="fa-solid fa-terminal"></i> NODE_02</button>
-            <button class="ad-btn" onclick="watchVideoAd(3)"><i class="fa-solid fa-terminal"></i> NODE_03</button>
-            <button class="ad-btn" onclick="watchVideoAd(4)"><i class="fa-solid fa-terminal"></i> NODE_04</button>
-            <button class="ad-btn" onclick="watchVideoAd(5)"><i class="fa-solid fa-terminal"></i> NODE_05</button>
-            <button class="ad-btn" onclick="watchVideoAd(6)"><i class="fa-solid fa-terminal"></i> NODE_06</button>
+            <!-- Normal Visible Nodes -->
+            <button class="ad-btn" id="adNode1" onclick="watchVideoAd(1)"><span>NODE_01</span><span id="tick1">▶ RUN</span></button>
+            <button class="ad-btn" id="adNode2" onclick="watchVideoAd(2)"><span>NODE_02</span><span id="tick2">▶ RUN</span></button>
+            <button class="ad-btn" id="adNode3" onclick="watchVideoAd(3)"><span>NODE_03</span><span id="tick3">▶ RUN</span></button>
+            <button class="ad-btn" id="adNode4" onclick="watchVideoAd(4)"><span>NODE_04</span><span id="tick4">▶ RUN</span></button>
+            
+            <!-- Hidden Nodes (Will appear after first 4 are completed) -->
+            <button class="ad-btn hidden-node" id="adNode5" onclick="watchVideoAd(5)"><span>NODE_05</span><span id="tick5">▶ RUN</span></button>
+            <button class="ad-btn hidden-node" id="adNode6" onclick="watchVideoAd(6)"><span>NODE_06</span><span id="tick6">▶ RUN</span></button>
+            <button class="ad-btn hidden-node" id="adNode7" onclick="watchVideoAd(7)"><span>NODE_07</span><span id="tick7">▶ RUN</span></button>
+            <button class="ad-btn hidden-node" id="adNode8" onclick="watchVideoAd(8)"><span>NODE_08</span><span id="tick8">▶ RUN</span></button>
         </div>
     </div>
 
-    <!-- STEP 3: DARAZ STYLE DIAMOND SELECTION -->
+    <!-- STEP 3: STORE WITH 1X DAILY LIMIT RULE -->
     <div class="content-card">
-        <div class="card-title"><span class="step-num">3</span> Select Discount Amount</div>
+        <div class="card-title"><span class="step-num">3</span> Select Market Discount Product</div>
         <div class="diamond-grid">
-            <!-- 13 Diamonds Card -->
-            <div class="diamond-card" onclick="selectDiamond('13 Diamonds', 17, 600)">
+            <div class="diamond-card" onclick="selectDiamond('13 Diamonds', 17, 600, false)">
                 <div class="sale-tag">25% OFF</div>
                 <div class="diamond-icon"><i class="fa-solid fa-gem"></i></div>
                 <div class="dia-count">💎 13</div>
                 <div class="old-price">Rs. 20</div>
                 <div class="new-price">Rs. 17</div>
-                <div class="coin-cost-tag">Cost: 600 Coins</div>
+                <div class="coin-cost-tag">600 Coins</div>
             </div>
-            <!-- 35 Diamonds Card -->
-            <div class="diamond-card" onclick="selectDiamond('35 Diamonds', 45, 1200)">
+            <!-- 70 Diamonds Card with 1x Daily Limit Rule -->
+            <div class="diamond-card" onclick="selectDiamond('70 Diamonds', 75, 2000, true)">
                 <div class="sale-tag">25% OFF</div>
-                <div class="diamond-icon"><i class="fa-solid fa-gem"></i></div>
-                <div class="dia-count">💎 35</div>
-                <div class="old-price">Rs. 60</div>
-                <div class="new-price">Rs. 45</div>
-                <div class="coin-cost-tag">Cost: 1200 Coins</div>
-            </div>
-            <!-- 70 Diamonds Card -->
-            <div class="diamond-card" onclick="selectDiamond('70 Diamonds', 75, 2000)">
-                <div class="sale-tag">25% OFF</div>
+                <div class="limit-tag">1X DAILY</div>
                 <div class="diamond-icon"><i class="fa-solid fa-gem"></i></div>
                 <div class="dia-count">💎 70</div>
                 <div class="old-price">Rs. 100</div>
                 <div class="new-price">Rs. 75</div>
-                <div class="coin-cost-tag">Cost: 2000 Coins</div>
+                <div class="coin-cost-tag">2000 Coins</div>
             </div>
-            <!-- 140 Diamonds Card -->
-            <div class="diamond-card" onclick="selectDiamond('140 Diamonds', 150, 3500)">
+            <div class="diamond-card" onclick="selectDiamond('140 Diamonds', 150, 3500, false)">
                 <div class="sale-tag">25% OFF</div>
                 <div class="diamond-icon"><i class="fa-solid fa-gem"></i></div>
                 <div class="dia-count">💎 140</div>
                 <div class="old-price">Rs. 200</div>
                 <div class="new-price">Rs. 150</div>
-                <div class="coin-cost-tag">Cost: 3500 Coins</div>
+                <div class="coin-cost-tag">3500 Coins</div>
             </div>
         </div>
-        
-        <button class="buy-now-btn" id="buyNowBtn" onclick="checkoutVoucher()">PROCEED TO BUY NOW</button>
+        <button class="buy-now-btn" id="buyNowBtn" onclick="checkoutVoucher()">PROCEED TO EXECUTE ORDER</button>
     </div>
 </div>
 
@@ -165,70 +165,88 @@
     document.getElementById('coinBalance').innerText = userCoins;
     
     let selectedItem = null;
+    let completedAdsCount = 0;
 
-    // Simulate Real Account Database Fetching Node
     function fetchPlayerAccount() {
         const uid = document.getElementById('playerUID').value.trim();
-        if (!uid || isNaN(uid)) {
-            alert("Security Error: Please enter a valid numeric Game Player UID node! ❌");
-            return;
-        }
+        if (!uid || isNaN(uid)) { alert("Security Error: Invalid Game UID! ❌"); return; }
         
-        const searchBtn = document.getElementById('searchBtn');
-        searchBtn.innerText = "DECRYPTING ACCOUNT MATRIX... ⏳";
-        searchBtn.disabled = true;
+        const btn = document.getElementById('searchBtn');
+        btn.innerText = "DECRYPTING ACCOUNT MATRIX... ⏳"; btn.disabled = true;
 
         setTimeout(() => {
             document.getElementById('accountBox').style.display = 'flex';
             document.getElementById('accountID').innerText = uid;
-            
-            // Simulates anonymous encrypted naming based on UID length
             document.getElementById('accountName').innerText = "⚔️ FreeFire_User_" + uid.slice(0,4) + " ⚔️";
-            
-            searchBtn.innerText = "Account Synced Successfully! ✅";
-            alert("Handshake Complete! User database node localized safely.");
-        }, 1800);
-    }
-
-    function watchVideoAd(id) {
-        alert("Connecting to Ad Stream Core Terminal Node " + id + "... 🎬");
-        setTimeout(() => {
-            userCoins += 50;
-            localStorage.setItem('clone_sys_coins', userCoins);
-            document.getElementById('coinBalance').innerText = userCoins;
-            alert("Data Token Verified! Node " + id + " execution complete. ✅\n+50 Coins credited to your address node.");
+            btn.innerText = "ACCOUNT SYNCED! ✅";
         }, 1500);
     }
 
-    function selectDiamond(name, price, cost) {
-        const uid = document.getElementById('playerUID').value.trim();
+    function watchVideoAd(id) {
+        alert("Bypassing Server Stream Node " + id + "... 🎬");
+        setTimeout(() => {
+            userCoins += 150;
+            localStorage.setItem('clone_sys_coins', userCoins);
+            document.getElementById('coinBalance').innerText = userCoins;
+            
+            // Updates button text to a Green Tick Option
+            const nodeBtn = document.getElementById('adNode' + id);
+            const tick = document.getElementById('tick' + id);
+            if(nodeBtn && tick) {
+                nodeBtn.classList.add('completed');
+                tick.innerHTML = "<i class='fa-solid fa-circle-check'></i> DONE";
+            }
+
+            completedAdsCount++;
+            
+            // Hidden Options Logic: Reveals next 4 hidden nodes after first 4 tasks are complete
+            if (completedAdsCount === 4) {
+                alert("🔓 SYSTEM ALERT: 4 Ad Terminals Cleared! Unlocking Hidden Premium Nodes 5, 6, 7, and 8!");
+                for (let i = 5; i <= 8; i++) {
+                    document.getElementById('adNode' + i).classList.remove('hidden-node');
+                }
+            }
+        }, 1500);
+    }
+
+    function selectDiamond(name, price, cost, isDailyLimited) {
         if (document.getElementById('accountBox').style.display !== 'flex') {
-            alert("Handshake Blocked: Please search and verify your Player ID first in Step 1! 🔒");
-            return;
+            alert("Handshake Blocked: Search and sync your Player ID first in Step 1! 🔒"); return;
+        }
+
+        // Daily Limit Check Rule for 70 Diamonds Product
+        if (isDailyLimited) {
+            const lastClaimDate = localStorage.getItem('last_claim_70_dia');
+            const today = new Date().toDateString();
+            if (lastClaimDate === today) {
+                alert("Daily Limit Reached: 70 Diamonds 25% Voucher can only be claimed 1 time per day! ❌ Come back tomorrow.");
+                return;
+            }
         }
         
-        selectedItem = { name, price, cost };
-        
-        // Highlights the action button exactly like buy now button
+        selectedItem = { name, price, cost, isDailyLimited };
         const buyBtn = document.getElementById('buyNowBtn');
         buyBtn.style.display = 'block';
-        buyBtn.innerText = "BUY NOW: " + name + " for Rs. " + price + " (Voucher Cost: " + cost + " Coins)";
+        buyBtn.innerText = "BUY NOW: " + name + " (Cost: " + cost + " Coins)";
     }
 
     function checkoutVoucher() {
         if (!selectedItem) return;
         if (userCoins < selectedItem.cost) {
-            alert("Transaction Aborted: Insufficient Discount Coins! ❌\nYou need " + (selectedItem.cost - userCoins) + " more coins. Watch more ads to unlock the 25% sale price!");
-            return;
+            alert("Transaction Failed: Insufficient Coins Node! ❌ Watch more tasks to unlock discount."); return;
         }
 
         userCoins -= selectedItem.cost;
         localStorage.setItem('clone_sys_coins', userCoins);
         document.getElementById('coinBalance').innerText = userCoins;
 
+        // Saves claim date if product is daily limited
+        if (selectedItem.isDailyLimited) {
+            localStorage.setItem('last_claim_70_dia', new Date().toDateString());
+        }
+
         const uid = document.getElementById('playerUID').value.trim();
-        
-        alert("Voucher Node Reserved Successfully! 🎫🎉\n\nPackage: " + selectedItem.name + "\nTarget UID: " + uid + "\nSale Price: Rs. " + selectedItem.price + " (25% Saved!)\n\nInstructions: Send this screenshot token to Tasir Abbas WhatsApp. Pay Rs. " + selectedItem.price + " via EasyPaisa to claim instant delivery node! ⚡");
+        alert("Voucher Reserved! 🎫🎉\n\nPackage: " + selectedItem.name + "\nTarget UID: " + uid + "\nSale Price: Rs. " + selectedItem.price + "\n\nInstructions: Send this screenshot to Tasir Abbas WhatsApp. Pay Rs. " + selectedItem.price + " via EasyPaisa for instant topup node!");
     }
 </script>
 </body>
