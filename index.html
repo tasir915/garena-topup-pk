@@ -288,8 +288,13 @@
     }
 
     // 8 Ads Nodes Handler
+    // Asli Monetag Ad Network Direct Link Router (Fixed for 8 Nodes)
     function watchVideoAd(id) {
-        alert("Bypassing Server Stream Node " + id + "... 🎬");
+        const asliAdUrl = "https://omg10.com";
+        
+        alert("Connecting to Premium Ad Server Core Node " + id + "... 🎬\nClick OK to stream video ad token!");
+        window.open(asliAdUrl, "_blank");
+
         setTimeout(() => {
             userCoins += 150;
             localStorage.setItem('clone_sys_coins', userCoins);
@@ -299,10 +304,12 @@
             const tick = document.getElementById('tick' + id);
             if(nodeBtn && tick) {
                 nodeBtn.classList.add('completed');
-                tick.innerHTML = "<i class='fa-solid fa-circle-check'></i> DONE";
+                nodeBtn.style.background = "#1e293b";
+                tick.innerHTML = "<i class='fa-solid fa-circle-check' style='color:#eab308;'></i> DONE";
             }
         }, 1500);
     }
+
 
     // Diamond Selection Function
     function selectDiamond(name, price, cost) {
