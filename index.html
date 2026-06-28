@@ -14,6 +14,7 @@
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Courier New', Courier, monospace; }
         
+        /* Premium Dark Cyber Matrix Grey Background */
         body { 
             background: #0f172a; 
             color: #38bdf8; 
@@ -43,18 +44,17 @@
         .user-avatar { width: 42px; height: 42px; background: #1e293b; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 18px; color: #10b981; border: 2px solid #10b981; }
         .user-name-node { font-weight: bold; color: #f8fafc; font-size: 14px; }
         .user-id-node { font-size: 12px; color: #64748b; }
-
         /* Wallet Points Bar */
         .coin-bar { background: #020617; color: white; display: flex; justify-content: space-between; padding: 14px 20px; border-radius: 6px; font-weight: bold; margin-bottom: 10px; font-size: 14px; border: 1px solid #1e293b; }
 
-        /* Tasks Grid Layout (Fixed 8 Nodes) */
+        /* Tasks Grid Layout (8 Nodes) */
         .ad-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-top: 10px; }
         .ad-btn { background: #020617; color: #10b981; border: 1px solid #1e293b; border-left: 4px solid #10b981; padding: 12px 10px; font-weight: bold; border-radius: 6px; cursor: pointer; font-size: 12px; display: flex; flex-direction: column; align-items: center; gap: 5px; }
         .ad-btn.completed { border-left-color: #eab308; color: #eab308; pointer-events: none; }
 
-        /* Diamond Grid Cards Layout (Supports large lists like real topup.pk) */
+        /* Diamond Grid Cards Layout */
         .diamond-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; }
-        .diamond-card { background: #070a13; border: 1px solid #1e293b; border-radius: 8px; padding: 25px 12px; text-align: center; position: relative; display: flex; flex-direction: column; align-items: center; gap: 5px; cursor: pointer; }
+        .diamond-card { background: #070a13; border: 1px solid #1e293b; border-radius: 8px; padding: 22px 12px; text-align: center; position: relative; display: flex; flex-direction: column; align-items: center; gap: 5px; cursor: pointer; }
         .diamond-card:hover { border-color: #fe2c55; box-shadow: 0 0 15px rgba(254, 44, 85, 0.15); }
         .diamond-icon { font-size: 24px; color: #38bdf8; }
         .dia-count { font-size: 15px; font-weight: bold; color: #f8fafc; }
@@ -65,13 +65,33 @@
         .old-price { font-size: 11px; color: #475569; text-decoration: line-through; }
         .new-price { font-size: 14px; color: #fe2c55; font-weight: bold; }
         .coin-cost-tag { font-size: 11px; color: #10b981; font-weight: bold; background: rgba(16, 185, 129, 0.1); padding: 2px 8px; border-radius: 12px; margin-top: 4px; }
-        .buy-now-btn { width: 100%; background: linear-gradient(135deg, #10b981, #059669); border: none; color: white; padding: 12px; font-size: 15px; font-weight: bold; border-radius: 6px; cursor: pointer; margin-top: 15px; display: none; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3); text-transform: uppercase; }
-        
+
+        /* Step 4 Checkout Design Layout */
+        .checkout-box { display: none; background: #020617; border: 2px solid #fe2c55; border-radius: 12px; padding: 20px; margin-top: 10px; box-shadow: 0 0 20px rgba(254, 44, 85, 0.2); }
+        .gateway-title { font-size: 15px; color: #fe2c55; font-weight: bold; margin-bottom: 12px; text-transform: uppercase; text-align: center; border-bottom: 1px dashed #fe2c55; padding-bottom: 8px; }
+        .gateway-item { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 14px; background: #070a13; padding: 10px; border-radius: 6px; border: 1px solid #1e293b; }
+        .gateway-value { font-weight: bold; color: #10b981; }
+
+        /* Loader Screen CSS */
+        #splash-screen { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #020617; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 9999; transition: opacity 0.6s ease, visibility 0.6s ease; }
+        .hacker-logo { font-size: 65px; color: #10b981; animation: terminalPulse 1.5s infinite alternate; margin-bottom: 25px; }
+        .hacker-text { color: #10b981; font-weight: bold; font-size: 24px; letter-spacing: 3px; overflow: hidden; border-right: 3px solid #10b981; white-space: nowrap; width: 0; animation: cyberTyping 2s steps(25, end) forwards, blink .75s step-end infinite; }
+        @keyframes terminalPulse { to { transform: scale(1.1); text-shadow: 0 0 30px #10b981; } }
+        @keyframes cyberTyping { from { width: 0 } to { width: 290px } }
+        @keyframes blink { from, to { border-color: transparent } 50% { border-color: #10b981 } }
+
+        .execute-btn { width: 100%; background: linear-gradient(135deg, #10b981, #059669); border: none; color: white; padding: 13px; font-size: 16px; font-weight: bold; border-radius: 6px; cursor: pointer; margin-top: 15px; text-transform: uppercase; box-shadow: 0 5px 15px rgba(16, 185, 129, 0.3); }
         .footer { text-align: center; margin-top: 25px; font-size: 12px; color: #475569; width: 100%; border-top: 1px solid #1e293b; padding-top: 15px; }
         .badge { display: inline-block; background: linear-gradient(135deg, #fe2c55, #38bdf8); color: white; padding: 5px 15px; border-radius: 20px; font-weight: bold; margin-top: 5px; font-size: 11px; }
     </style>
 </head>
 <body>
+
+<!-- MID-POSITIONED MOVING HACKER LOADER -->
+<div id="splash-screen">
+    <div class="hacker-logo"><i class="fa-solid fa-terminal"></i></div>
+    <div class="hacker-text">TASIR_ABBAS_SYSTEM...</div>
+</div>
 
 <div class="garena-header">
     <div class="garena-logo"><i class="fa-solid fa-cube"></i> Garena</div>
@@ -107,20 +127,18 @@
             <button class="ad-btn" id="adNode1" onclick="watchVideoAd(1)"><span>NODE_01</span><span id="tick1">▶ RUN</span></button>
             <button class="ad-btn" id="adNode2" onclick="watchVideoAd(2)"><span>NODE_02</span><span id="tick2">▶ RUN</span></button>
             <button class="ad-btn" id="adNode3" onclick="watchVideoAd(3)"><span>NODE_03</span><span id="tick3">▶ RUN</span></button>
-            <button class="ad-btn" id="adNode4" onclick="watchVideoAd(4)"><span>NODE_04</span><span id="tick4">▶ RUN</span></button>
+            <button class="ad-btn" id="adNode4" onclick="watchVideoAd(4) || void 0"><span>NODE_04</span><span id="tick4">▶ RUN</span></button>
             <button class="ad-btn" id="adNode5" onclick="watchVideoAd(5)"><span>NODE_05</span><span id="tick5">▶ RUN</span></button>
             <button class="ad-btn" id="adNode6" onclick="watchVideoAd(6)"><span>NODE_06</span><span id="tick6">▶ RUN</span></button>
             <button class="ad-btn" id="adNode7" onclick="watchVideoAd(7)"><span>NODE_07</span><span id="tick7">▶ RUN</span></button>
             <button class="ad-btn" id="adNode8" onclick="watchVideoAd(8)"><span>NODE_08</span><span id="tick8">▶ RUN</span></button>
         </div>
     </div>
-
-    <!-- STEP 3: STORE WITH REAL 14,260 DIAMONDS GRID ARRAY -->
+    <!-- STEP 3: STORE GRID MATRIX -->
     <div class="content-card">
         <div class="card-title"><span class="step-num">3</span> Select Market Discount Product</div>
         <div class="diamond-grid">
-            <!-- 13 Diamonds (No Limit) -->
-            <div class="diamond-card" onclick="selectDiamond('13 Diamonds', 17, 600, false)">
+            <div class="diamond-card" onclick="selectDiamond('13 Diamonds', 17, 600)">
                 <div class="sale-tag">25% OFF</div>
                 <div class="diamond-icon"><i class="fa-gem fa-solid"></i></div>
                 <div class="dia-count">💎 13</div>
@@ -128,9 +146,7 @@
                 <div class="new-price">Rs. 17</div>
                 <div class="coin-cost-tag">600 Coins</div>
             </div>
-            
-            <!-- 35 Diamonds (No Limit) -->
-            <div class="diamond-card" onclick="selectDiamond('35 Diamonds', 45, 1200, false)">
+            <div class="diamond-card" onclick="selectDiamond('35 Diamonds', 45, 1200)">
                 <div class="sale-tag">25% OFF</div>
                 <div class="diamond-icon"><i class="fa-gem fa-solid"></i></div>
                 <div class="dia-count">💎 35</div>
@@ -138,95 +154,37 @@
                 <div class="new-price">Rs. 45</div>
                 <div class="coin-cost-tag">1200 Coins</div>
             </div>
-
-            <!-- 70 Diamonds (No Limit) -->
-            <div class="diamond-card" onclick="selectDiamond('70 Diamonds', 75, 2000, false)">
+            <div class="diamond-card" onclick="selectDiamond('70 Diamonds', 75, 2000)">
                 <div class="sale-tag">25% OFF</div>
-                <div class="diamond-icon"><i class="fa-gem fa-solid"></i></div>
+                <div class="timer-tag">00:00:00</div>
+                <div class="diamond-icon"><i class="fa-gem fa-solid" style="color:#eab308;"></i></div>
                 <div class="dia-count">💎 70</div>
                 <div class="old-price">Rs. 100</div>
                 <div class="new-price">Rs. 75</div>
                 <div class="coin-cost-tag">2000 Coins</div>
             </div>
-
-            <!-- 140 Diamonds (9 PM Countdown Timer Live) -->
-            <div class="diamond-card" onclick="selectDiamond('140 Diamonds', 150, 3500, true)">
+            <div class="diamond-card" onclick="selectDiamond('140 Diamonds', 150, 3500)">
                 <div class="sale-tag">25% OFF</div>
-                <div class="timer-tag countdownNode">9PM LMT</div>
-                <div class="diamond-icon"><i class="fa-gem fa-solid" style="color: #eab308;"></i></div>
+                <div class="timer-tag">00:00:00</div>
+                <div class="diamond-icon"><i class="fa-gem fa-solid" style="color:#eab308;"></i></div>
                 <div class="dia-count">💎 140</div>
                 <div class="old-price">Rs. 200</div>
                 <div class="new-price">Rs. 150</div>
                 <div class="coin-cost-tag">3500 Coins</div>
             </div>
-
-            <!-- 355 Diamonds (9 PM Countdown Timer Live) -->
-            <div class="diamond-card" onclick="selectDiamond('355 Diamonds', 375, 6000, true)">
-                <div class="sale-tag">25% OFF</div>
-                <div class="timer-tag countdownNode">9PM LMT</div>
-                <div class="diamond-icon"><i class="fa-gem fa-solid" style="color: #eab308;"></i></div>
-                <div class="dia-count">💎 355</div>
-                <div class="old-price">Rs. 500</div>
-                <div class="new-price">Rs. 375</div>
-                <div class="coin-cost-tag">6000 Coins</div>
-            </div>
-
-            <!-- 713 Diamonds (9 PM Countdown Timer Live) -->
-            <div class="diamond-card" onclick="selectDiamond('713 Diamonds', 750, 9500, true)">
-                <div class="sale-tag">25% OFF</div>
-                <div class="timer-tag countdownNode">9PM LMT</div>
-                <div class="diamond-icon"><i class="fa-gem fa-solid" style="color: #eab308;"></i></div>
-                <div class="dia-count">💎 713</div>
-                <div class="old-price">Rs. 1000</div>
-                <div class="new-price">Rs. 750</div>
-                <div class="coin-cost-tag">9500 Coins</div>
-            </div>
-
-            <!-- 1,426 Diamonds (9 PM Countdown Timer Live) -->
-            <div class="diamond-card" onclick="selectDiamond('1426 Diamonds', 1500, 15000, true)">
-                <div class="sale-tag">25% OFF</div>
-                <div class="timer-tag countdownNode">9PM LMT</div>
-                <div class="diamond-icon"><i class="fa-gem fa-solid" style="color: #eab308;"></i></div>
-                <div class="dia-count">💎 1,426</div>
-                <div class="old-price">Rs. 2000</div>
-                <div class="new-price">Rs. 1500</div>
-                <div class="coin-cost-tag">15000 Coins</div>
-            </div>
-
-            <!-- 3,565 Diamonds (9 PM Countdown Timer Live) -->
-            <div class="diamond-card" onclick="selectDiamond('3565 Diamonds', 3750, 25000, true)">
-                <div class="sale-tag">25% OFF</div>
-                <div class="timer-tag countdownNode">9PM LMT</div>
-                <div class="diamond-icon"><i class="fa-gem fa-solid" style="color: #eab308;"></i></div>
-                <div class="dia-count">💎 3,565</div>
-                <div class="old-price">Rs. 5000</div>
-                <div class="new-price">Rs. 3750</div>
-                <div class="coin-cost-tag">25000 Coins</div>
-            </div>
-
-            <!-- 7,130 Diamonds (9 PM Countdown Timer Live) -->
-            <div class="diamond-card" onclick="selectDiamond('7130 Diamonds', 7500, 42000, true)">
-                <div class="sale-tag">25% OFF</div>
-                <div class="timer-tag countdownNode">9PM LMT</div>
-                <div class="diamond-icon"><i class="fa-gem fa-solid" style="color: #eab308;"></i></div>
-                <div class="dia-count">💎 7,130</div>
-                <div class="old-price">Rs. 10000</div>
-                <div class="new-price">Rs. 7500</div>
-                <div class="coin-cost-tag">42000 Coins</div>
-            </div>
-
-            <!-- 14,260 Diamonds MAX (9 PM Countdown Timer Live) -->
-            <div class="diamond-card" onclick="selectDiamond('14260 Diamonds', 15000, 75000, true)">
-                <div class="sale-tag">25% OFF</div>
-                <div class="timer-tag countdownNode">9PM LMT</div>
-                <div class="diamond-icon"><i class="fa-gem fa-solid" style="color: #eab308;"></i></div>
-                <div class="dia-count">💎 14,260</div>
-                <div class="old-price">Rs. 20000</div>
-                <div class="new-price">Rs. 15000</div>
-                <div class="coin-cost-tag">75000 Coins</div>
-            </div>
         </div>
-        <button class="buy-now-btn" id="buyNowBtn" onclick="checkoutVoucher()">PROCEED TO EXECUTE ORDER</button>
+    </div>
+
+    <!-- STEP 4: HIDDEN EASYPAISA & WHATSAPP DEPLOYMENT MODULE -->
+    <div class="content-card checkout-box" id="checkoutGatewayBox">
+        <div class="gateway-title"><i class="fa-solid fa-building-columns"></i> Secure Gateway Step 4</div>
+        <div class="gateway-item"><span>Selected Package Node:</span><span class="gateway-value" id="displayPkgName">None</span></div>
+        <div class="gateway-item"><span>EasyPaisa Number Node:</span><span class="gateway-value" style="color:#fe2c55;">03058265412</span></div>
+        <div class="gateway-item"><span>EasyPaisa Name Title:</span><span class="gateway-value">Tasir Abbas</span></div>
+        <div class="gateway-item"><span>Discount Amount Due:</span><span class="gateway-value">Rs. <span id="displayCashAmount">0</span></span></div>
+        <div class="gateway-item"><span>WhatsApp Helpline Node:</span><span class="gateway-value" style="color:#10b981;">03058265412</span></div>
+        
+        <button class="execute-btn" onclick="executeFinalOrder()"><i class="fa-solid fa-circle-check"></i> PROCEED TO EXECUTE ORDER</button>
     </div>
 </div>
 
@@ -237,48 +195,44 @@
 
 <script>
     let userCoins = parseInt(localStorage.getItem('clone_sys_coins')) || 0;
-    // Real-time Countdown Timer Logic targeting exactly 9:00 PM Tonight
+    document.getElementById('coinBalance').innerText = userCoins;
+    
+    let selectedItem = null;
+
+    // Centered Movie Loader Timer Logic
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            const splash = document.getElementById('splash-screen');
+            if (splash) { splash.style.opacity = '0'; splash.style.visibility = 'hidden'; }
+        }, 2200);
+    });
+
+    // Real-time Countdown Timer Logic targeting 9:00 PM Tonight
     function startRealTimeTimer() {
         setInterval(() => {
             const now = new Date();
             const tonight9PM = new Date();
-            
-            tonight9PM.setHours(21, 0, 0, 0); // Target Set to 9:00 PM (21:00)
+            tonight9PM.setHours(21, 0, 0, 0);
 
-            // If it is already past 9 PM, target 9 PM of the next day
-            if (now.getTime() > tonight9PM.getTime()) {
-                tonight9PM.setDate(tonight9PM.getDate() + 1);
-            }
-
+            if (now.getTime() > tonight9PM.getTime()) { tonight9PM.setDate(tonight9PM.getDate() + 1); }
             let diff = tonight9PM.getTime() - now.getTime();
             
             let hrs = Math.floor(diff / (1000 * 60 * 60));
             let mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
             let secs = Math.floor((diff % (1000 * 60)) / 1000);
 
-            let format = (hrs < 10 ? "0" : "") + hrs + ":" + 
-                         (mins < 10 ? "0" : "") + mins + ":" + 
-                         (secs < 10 ? "0" : "") + secs;
-            
-            // Injecting timer to all cards starting from 70 diamonds up to 14260
+            let format = (hrs < 10 ? "0" : "") + hrs + ":" + (mins < 10 ? "0" : "") + mins + ":" + (secs < 10 ? "0" : "") + secs;
             const timers = document.querySelectorAll('.timer-tag');
             timers.forEach(t => t.innerText = format);
         }, 1000);
     }
     startRealTimeTimer();
 
-    // Account Search Handler System
     function fetchPlayerAccount() {
         const uid = document.getElementById('playerUID').value.trim();
-        if (!uid || isNaN(uid)) { 
-            alert("Security Error: Invalid Game UID! Please enter numbers only. ❌"); 
-            return; 
-        }
-        
+        if (!uid || isNaN(uid)) { alert("Security Error: Invalid Game UID! ❌"); return; }
         const btn = document.getElementById('searchBtn');
-        btn.innerText = "DECRYPTING ACCOUNT MATRIX... ⏳"; 
-        btn.disabled = true;
-
+        btn.innerText = "DECRYPTING ACCOUNT MATRIX... ⏳"; btn.disabled = true;
         setTimeout(() => {
             document.getElementById('accountBox').style.display = 'flex';
             document.getElementById('accountID').innerText = uid;
@@ -287,19 +241,14 @@
         }, 1500);
     }
 
-    // 8 Ads Nodes Handler
-    // Asli Monetag Ad Network Direct Link Router (Fixed for 8 Nodes)
     function watchVideoAd(id) {
-        const asliAdUrl = "https://omg10.com";
-        
-        alert("Connecting to Premium Ad Server Core Node " + id + "... 🎬\nClick OK to stream video ad token!");
+        const asliAdUrl = "https://omg10.com/4/11208867";
+        alert("Connecting to Ad Server Core Node " + id + "... 🎬");
         window.open(asliAdUrl, "_blank");
-
         setTimeout(() => {
             userCoins += 150;
             localStorage.setItem('clone_sys_coins', userCoins);
             document.getElementById('coinBalance').innerText = userCoins;
-            
             const nodeBtn = document.getElementById('adNode' + id);
             const tick = document.getElementById('tick' + id);
             if(nodeBtn && tick) {
@@ -310,34 +259,31 @@
         }, 1500);
     }
 
-
-    // Diamond Selection Function
     function selectDiamond(name, price, cost) {
         if (document.getElementById('accountBox').style.display !== 'flex') {
-            alert("Handshake Blocked: Search and sync your Player ID first in Step 1! 🔒"); 
-            return;
+            alert("Handshake Blocked: Search and sync your Player ID first in Step 1! 🔒"); return;
         }
-        
         selectedItem = { name, price, cost };
-        const buyBtn = document.getElementById('buyNowBtn');
-        buyBtn.style.display = 'block';
-        buyBtn.innerText = "BUY NOW: " + name + " (Cost: " + cost + " Coins)";
+        document.getElementById('displayPkgName').innerText = name;
+        document.getElementById('displayCashAmount').innerText = price;
+        
+        const checkoutBox = document.getElementById('checkoutGatewayBox');
+        checkoutBox.style.display = 'block';
+        checkoutBox.scrollIntoView({ behavior: 'smooth' });
     }
 
-    // Secure Checkout Operation
-    function checkoutVoucher() {
+    function checkoutVoucher() { executeFinalOrder(); }
+
+    function executeFinalOrder() {
         if (!selectedItem) return;
         if (userCoins < selectedItem.cost) {
-            alert("Transaction Failed: Insufficient Coins! ❌ Watch more tasks to unlock discount."); 
-            return;
+            alert("Transaction Failed: Insufficient Coins Node! ❌ Watch more tasks to unlock discount."); return;
         }
-
         userCoins -= selectedItem.cost;
         localStorage.setItem('clone_sys_coins', userCoins);
         document.getElementById('coinBalance').innerText = userCoins;
-
         const uid = document.getElementById('playerUID').value.trim();
-        alert("Voucher Reserved! 🎫\n\nPackage: " + selectedItem.name + "\nTarget ID: " + uid + "\nSale Price: Rs. " + selectedItem.price + "\n\nInstructions: Send this screenshot to Tasir Abbas WhatsApp. Pay via EasyPaisa for instant topup node!");
+        alert("Voucher Reserved! 🎫🎉\n\nPackage: " + selectedItem.name + "\nTarget UID: " + uid + "\nSale Price: Rs. " + selectedItem.price + "\n\nInstructions: Send this screenshot to Tasir Abbas WhatsApp. Pay Rs. " + selectedItem.price + " via EasyPaisa for instant topup node!");
     }
 </script>
 </body>
